@@ -130,7 +130,7 @@ const MovieUploader = () => {
         const blob = new Blob([patternFileString], { type: "text/plain" });
 
         // ストレージへ保存⇒あとで関数化
-        const strageFilePath_ARmarker_pattern = user_id + "/" + "ARmarker.patt";
+        strageFilePath_ARmarker_pattern = user_id + "/" + "ARmarker.patt";
         const storageRef = ref(
           firebase.storage,
           strageFilePath_ARmarker_pattern
