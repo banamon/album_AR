@@ -4,16 +4,18 @@ import ImageLogo from "./movie.svg";
 import "./MovieUpload.css";
 // firebase
 import firebase from "./firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytesResumable } from "firebase/storage";
 // ページ遷移
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function MovieUploader() {
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
-  var [user_id, setuse_id] = useState("hogehgoe")
+  var [user_id, setuse_id] = useState("hogehgoe");
   // var user_id = "hogehoge";
+  var movie_path = "";
+
 
   const OnFileUplodeToFirebase = async (e) => {
     console.log(e.target.files);
@@ -21,22 +23,22 @@ function MovieUploader() {
 
     // DB登録
     try {
-      const docRef = await addDoc(collection(firebase.db, "arbum_data"), {
-        movie_path: file.name,
-      });
-      console.log("Document written with ID: ", docRef.id);
-      // user_id = docRef.id;
+      const docRef = await addDoc(collection(firebase.db, "arbum_data"), {});
       setuse_id(docRef.id);
-      console.log("user_id"  + user_id);
-
-      const movie_path = docRef.id + "/" + file.name;
-      upload(movie_path,file);
+      movie_path = docRef.id + "/" + file.name;
+      const userRef = await updateDoc(
+        doc(firebase.db, "arbum_data", docRef.id),
+        {
+          movie_path: movie_path,
+        }
+      );
+      upload(movie_path, file);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
 
-  function upload(movie_path,file){
+  function upload(movie_path, file) {
     console.log("動画保存開始 movie_path" + movie_path);
     const storageRef = ref(firebase.storage, movie_path);
     const uploadMovie = uploadBytesResumable(storageRef, file);
@@ -71,7 +73,7 @@ function MovieUploader() {
       () => {
         setLoading(false);
         setUploaded(true);
-        console.log("user_id"  + user_id);
+        console.log("user_id" + user_id);
         // var user_id = file.lastModified;
         // console.log(file);
         // var result = document.getElementById("result");
@@ -96,8 +98,6 @@ function MovieUploader() {
   //     console.error("Error adding document: ", e);
   //   }
   // };
-
-  
 
   const ClickpageToMakeMarker = (e) => {
     console.log("click");
@@ -139,7 +139,7 @@ function MovieUploader() {
                   <p>アップロード完了しました！</p>
                 </h2>
                 <p>
-                  <Link to={"/marker"} state={{user_id}}>
+                  <Link to={"/marker"} state={{ user_id }}>
                     次へ
                   </Link>
                 </p>

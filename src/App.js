@@ -28,11 +28,12 @@ const Home = () => {
         <link rel="stylesheet" type="text/css" href="style.css"/>
       </head>
       <body>
-        <div class="welcome-container">
+        <div className="welcome-container">
           <h1>ようこそ</h1>
           <p>そつあるさくせい</p>
-          <p><Link to="/about"><button class="start-button">スタート</button></Link></p>
+          <p><Link to="/about"><button className="start-button">スタート</button></Link></p>
           <p><Link to="/marker">ARマーカー生成（Debug）</Link></p>
+          <p><Link to="/reader">リーダー（Debug）</Link></p>
         </div>
       </body>
     </html>
