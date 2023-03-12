@@ -6,9 +6,14 @@ import { ref, getStorage, getDownloadURL  } from "firebase/storage";
 
 const ARComponent = () => {  
   // id取得
-  // let url = new URL(window.location.href);
-  // let params = url.searchParams;
-  // console.log(params.get('user_id')); // 5
+  let url = new URL(window.location.href);
+  let params = url.searchParams;
+  console.log(params.get('user_id')); // 5
+
+  // // IDの取得 おそらくGET
+  var user_id = params.get('user_id');
+  // var user_id = "zC1oHhStWJvEIQrBC1fT";
+
 
   // 動画path
   const [moviefile_path, setMoviePath] = useState(process.env.PUBLIC_URL + "/testsrc/Debug.mp4");
@@ -16,9 +21,6 @@ const ARComponent = () => {
 
   // const moviefile_path = process.env.PUBLIC_URL + "/testsrc/Debug.mp4";
   // const markerpatternfile_path = process.env.PUBLIC_URL + "/testsrc/pattern-Debugmarker.patt";
-
-  // IDの取得 おそらくGET
-  var user_id = "xFk3VzTvRtEgwEp7EXmO";
 
   // setMoviePath()
   // setPattaernPath()
@@ -34,7 +36,7 @@ const ARComponent = () => {
     const DB_movie_path = Doc.data().movie_path;
     console.log("DB取得完了");
     setMoviePath(GetMovie(DB_movie_path))
-    // setPattaernPath(Getpattern(DB_marker_pattern_path))
+    setPattaernPath(Getpattern(DB_marker_pattern_path))
   }
   conectDB()
 

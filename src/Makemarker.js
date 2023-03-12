@@ -80,7 +80,7 @@ const MovieUploader = () => {
   const updateFullMarkerImage = async () => {
     console.log("updateFullMarkerImage : ARマーカの生成");
     // get patternRatio とりあえずテキトーに設定・自由に変更できるようにしてもいいね
-    var patternRatio = 0.9;
+    var patternRatio = 0.6;
     var imageSize = 512;
     var borderColor = "black";
     // var patternRatio = document.querySelector('#patternRatioSlider').value/100
