@@ -6,13 +6,13 @@ import { ref, getStorage, getDownloadURL  } from "firebase/storage";
 
 const ARComponent = () => {  
   // id取得
-  let url = new URL(window.location.href);
-  let params = url.searchParams;
-  console.log(params.get('user_id')); // 5
+  // let url = new URL(window.location.href);
+  // let params = url.searchParams;
+  // console.log(params.get('user_id')); // 5
 
   // // IDの取得 おそらくGET
-  var user_id = params.get('user_id');
-  // var user_id = "zC1oHhStWJvEIQrBC1fT";
+  // var user_id = params.get('user_id');
+  var user_id = "u3BPqWBMqVbgvnOubQRh";
 
 
   // 動画path
@@ -33,6 +33,7 @@ const ARComponent = () => {
     console.log(Doc.data().marker_pattern_path);
     console.log(Doc.data().movie_path);
     const DB_marker_pattern_path = Doc.data().marker_pattern_path;
+    // const DB_marker_pattern_path = Doc.data().marker_pattern_path_d;
     const DB_movie_path = Doc.data().movie_path;
     console.log("DB取得完了");
     setMoviePath(GetMovie(DB_movie_path))
@@ -102,6 +103,8 @@ const Getpattern = (DB_marker_pattern_path) => {
 
   return (
     <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
+    {/* <a-scene embedded arjs>  */}
+    {/* <a-scene arjs> */}
       <a-assets timeout="30000">
         <video
           autoPlay

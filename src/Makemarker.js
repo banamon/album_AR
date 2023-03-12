@@ -27,6 +27,7 @@ const MovieUploader = () => {
   const { state } = useLocation();
   const user_id = state.user_id;
   console.log("id取得" + user_id);
+  // const user_id="";
 
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
@@ -109,17 +110,37 @@ const MovieUploader = () => {
         // 本当はここから下は，ARマーカ作成完了 というボタンを押したら実行する方がいい気がする
 
         // ストレージへ保存⇒あとで関数化
-        strageFilePath_ARmarker_img = user_id + "/" + "ARmarker.png";
-        const storageRef = ref(firebase.storage, strageFilePath_ARmarker_img);
-        uploadString(storageRef, fullMarkerURL, "data_url").then((snapshot) => {
-          console.log("ARマーカストレージ保存完了");
-        });
+        // strageFilePath_ARmarker_img = user_id + "/" + "ARmarker.png";
+        // const storageRef = ref(firebase.storage, strageFilePath_ARmarker_img);
+        // uploadString(storageRef, fullMarkerURL, "data_url").then((snapshot) => {
+        //   console.log("ARマーカストレージ保存完了");
+        // });
+        SetStorage_ARmarker_img();
 
         // パターンファイル作成開始
         OutPutPattarnFile();
       }
     );
   };
+
+  const SetStorage_ARmarker_img=()=>{
+    console.log("ARマーカ画像の保存開始");
+    strageFilePath_ARmarker_img = user_id + "/" + "ARmarker.png";
+    const storageRef = ref(firebase.storage, strageFilePath_ARmarker_img);
+    uploadString(storageRef, fullMarkerURL, "data_url").then((snapshot) => {
+      console.log("ARマーカストレージ保存完了");
+    });
+  }
+
+  const SetStorage_ARmarker_pattern=(patternFileString)=>{
+            const blob = new Blob([patternFileString], { type: "text/plain" });
+    strageFilePath_ARmarker_pattern = user_id + "/" + "ARmarker.patt";
+    const storageRef = ref(firebase.storage,strageFilePath_ARmarker_pattern);
+    // 'file' comes from the Blob or File API
+    uploadBytes(storageRef, blob).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
+  }
 
   // ARマーカパターンファイル出力
   const OutPutPattarnFile = () => {
@@ -130,16 +151,13 @@ const MovieUploader = () => {
         const blob = new Blob([patternFileString], { type: "text/plain" });
 
         // ストレージへ保存⇒あとで関数化
-        strageFilePath_ARmarker_pattern = user_id + "/" + "ARmarker.patt";
-        const storageRef = ref(
-          firebase.storage,
-          strageFilePath_ARmarker_pattern
-        );
-
-        // 'file' comes from the Blob or File API
-        uploadBytes(storageRef, blob).then((snapshot) => {
-          console.log("Uploaded a blob or file!");
-        });
+        // strageFilePath_ARmarker_pattern = user_id + "/" + "ARmarker.patt";
+        // const storageRef = ref(firebase.storage,strageFilePath_ARmarker_pattern);
+        // // 'file' comes from the Blob or File API
+        // uploadBytes(storageRef, blob).then((snapshot) => {
+        //   console.log("Uploaded a blob or file!");
+        // });
+        SetStorage_ARmarker_pattern(patternFileString)
 
         // DB保存
         updateDB_ARmarker();
