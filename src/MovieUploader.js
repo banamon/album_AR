@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import ImageLogo from "./movie.svg";
 import "./MovieUpload.css";
+import CircleProgress from "./CircleProgress";
 // firebase
 import firebase from "./firebase";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
@@ -33,6 +34,7 @@ function MovieUploader() {
         }
       );
       upload(movie_path, file);
+
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -117,8 +119,9 @@ function MovieUploader() {
   return (
     <>
       {loading ? (
-        <div>
-          <progress max="100" value="50" id="loading"></progress>
+        <div id="load-screen">
+          <progress max="100" value="0" id="loading"></progress>
+          {/* <CircleProgress id="loading" value={0.5} size={100} color="#ff0000" emptyColor="#eee" /> */}
           <h3 id="percentage">0 %</h3>
           <h2 className="nowloading">アップロード中・・・</h2>
         </div>
@@ -126,15 +129,7 @@ function MovieUploader() {
         <>
           {isUploaded ? (
             <>
-              <div>
-                <img
-                  id="qr-code"
-                  src="qr-code.png"
-                  alt="qr-code"
-                  className="qr-code"
-                />
-                <br />
-                <br />
+              <div id="uploaded-screen">
                 <h2 id="result" className="result">
                   <p>アップロード完了しました！</p>
                 </h2>

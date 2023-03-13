@@ -120,4 +120,4 @@ const ARComponent = () => {
   );
 };
 
-export default ARComponent;
+export default ARReader;
