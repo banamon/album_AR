@@ -6,6 +6,8 @@ import { ref, getStorage, getDownloadURL } from "firebase/storage";
 
 const ARComponent = () => {
   const [loading, setLoading] = useState(false);
+  const videotag = document.getElementById("video");
+
 
   // id取得
   // let url = new URL(window.location.href);
@@ -52,6 +54,7 @@ const ARComponent = () => {
         console.log("動画取得: " + url);
         // setMoviePath(url)
         console.log("動画取得完了");
+        videotag.src = url;
         return url;
       })
       .catch((error) => {
@@ -87,7 +90,7 @@ const ARComponent = () => {
       <a-assets timeout="600000">
         <video
           autoPlay
-          id="movie"
+          id="video"
           src={moviefile_path}
           // loop={true}
           preload="auto"
@@ -112,12 +115,12 @@ const ARComponent = () => {
   }
 
   return (
-    <>
-      {!loading ? (Viewloading()):(ViewAR())}
-    </>
-    // ViewAR()
+    // <>
+    //   {!loading ? (Viewloading()):(ViewAR())}
+    // </>
+    ViewAR()
     // Viewloading()
   );
 };
 
-export default ARReader;
+export default ARComponent;
