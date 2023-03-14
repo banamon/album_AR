@@ -4,6 +4,7 @@ import "./App.css";
 import "./style.css";
 import MovieUploader from "./MovieUploader";
 import Makemarker from "./Makemarker";
+import TextUploader from "./TextUploader";
 import ARReader from "./ARReader";
 import ParticlesBackground from "./particlesBackground";
 
@@ -16,6 +17,7 @@ const App = () => {
             <Route path={`/`} element={<Home />} />
             <Route path={`/about/`} element={<About />} />
             <Route path={`/marker/`} element={<Marker />} />
+            <Route path={`/text/`} element={<TextUploader />} />
             <Route path={`/reader/`} element={<Reader />} />
             {/* <Route path={`/reader?user_id=3SFzC76qlfq9yO264F6G/`} element={<Reader />} /> */}
         </Routes>
@@ -43,6 +45,7 @@ const Home = () => {
               <p id="main_explane">自分だけのアルバムを作成しよう！</p>
               <p><Link to="/about"><button id="start_button" className="start-button"><a>今すぐはじめる</a></button></Link></p>
               <p><Link to="/marker">ARマーカー生成（Debug）</Link></p>
+              <p><Link to="/marker">テキスト投稿（Debug）</Link></p>
               <p><Link to={"/reader"} >readerへ移動する</Link></p>
             </div>
             <div id="ctachfrase_box">

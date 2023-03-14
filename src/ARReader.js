@@ -10,10 +10,10 @@ const ARComponent = () => {
 
 
   // id取得
-  // let url = new URL(window.location.href);
-  // let params = url.searchParams;
-  // var user_id = params.get("user_id");
-  var user_id = "TzxJ9ox39PmW84TgS19x";
+  let url = new URL(window.location.href);
+  let params = url.searchParams;
+  var user_id = params.get("user_id");
+  // var user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("uid取得:" + user_id);
 
   // 動画path（デフォルトを用意）
