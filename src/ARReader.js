@@ -3,100 +3,71 @@ import React, { useState } from "react";
 import firebase from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { ref, getStorage, getDownloadURL } from "firebase/storage";
+import { Cursor } from "react-aframe-ar/dist/primitives";
 
-const ARComponent = () => {
+const ARReader = () => {
   const [loading, setLoading] = useState(false);
-
-  // id取得
-  // let url = new URL(window.location.href);
-  // let params = url.searchParams;
-  // var user_id = params.get("user_id");
+  const storage = getStorage();
   var user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("uid取得:" + user_id);
 
-  // 動画path（デフォルトを用意）
-  const [moviefile_path, setMoviePath] = useState(
-    process.env.PUBLIC_URL + "/testsrc/Debug.mp4"
-  );
-  // パターンファイルpath
-  const [markerpatternfile_path, setPattaernPath] = useState(
-    process.env.PUBLIC_URL + "/testsrc/pattern-Debugmarker.patt"
-  );
+  var moviefile_path = "https://firebasestorage.googleapis.com/v0/b/test-arbum.appspot.com/o/TzxJ9ox39PmW84TgS19x%2FDebug_sax.mp4?alt=media&token=15f967f7-cae9-48d2-bf1b-a5b46cce5481";
 
-  const conectDB = async () => {
-    // DBからpathの取得 非同期処理注意
-    console.log("DB取得開始");
-    const Doc = await getDoc(doc(firebase.db, "arbum_data", user_id));
-    console.log(typeof Doc);
-    console.log(Doc.data().marker_pattern_path);
-    console.log(Doc.data().movie_path);
-    const DB_marker_pattern_path = Doc.data().marker_pattern_path;
-    const DB_movie_path = Doc.data().movie_path;
-    console.log("DB取得完了");
-    setMoviePath(GetMovie(DB_movie_path));
-    setPattaernPath(Getpattern(DB_marker_pattern_path));
 
-    // loading画面終了（この処理をDB取得完了時ではなく，a-frame作り終わったタイミングでしたい
-    setLoading(true);
-    console.log("loading完了");
-  };
-  
-  conectDB();
+  // テスト用
+  window.onload = function(){
+    const videotag = document.getElementById("movie");
+    console.log("ビデオタグ", videotag)
+    videotag.src = moviefile_path;
+    // videotag.play();
 
-  const GetMovie = (DB_movie_path) => {
-    // pathからStorageにアクセス(今は直接アクセス)
-    const storage = getStorage();
-    const FirestoreRef_Movie = ref(storage, DB_movie_path);
-    getDownloadURL(FirestoreRef_Movie)
-      .then((url) => {
-        console.log("動画取得: " + url);
-        // setMoviePath(url)
-        console.log("動画取得完了");
-        return url;
-      })
-      .catch((error) => {
-        console.err("動画取得ERR: " + error);
-        // Handle any errors
-      });
-  };
+    const markerpatternfile_path = user_id + "/ARmarker.patt";
+    const pattRef = ref(storage, markerpatternfile_path);
+    const movieRef = ref(storage, moviefile_path);
+    console.log("")
+    console.log(markerpatternfile_path)
+    console.log(moviefile_path)
+    console.log(pattRef)
+    console.log(movieRef)
+    console.log("")
 
-  const Getpattern = (DB_marker_pattern_path) => {
-    const storage = getStorage();
-    const FirestoreRef_Pattern = ref(storage, DB_marker_pattern_path);
-    getDownloadURL(FirestoreRef_Pattern)
-      .then((url) => {
-        console.log("patt取得開始" + url);
-        // setPattaernPath(url);
-        console.log("patt取得完了" + url);
-        return url;
-      })
-      .catch((error) => {
-        console.err("pattern取得ERR: " + error);
-      });
-  };
+  // getDownloadURL(movieRef).then((url) => {
+  //   console.log("getDownloadURL: " + url);
+  //   // moviefile_path = url;
+  //   // setMoviePath(url)
+  //   console.log("DownloadURL取得完了");
+  //   videotag.src = url;
+  //   // if(videotag !== null){
+  //   // }
+  //   console.log("videotag", videotag)
+  // })
+  // .catch((error) => {
+  //   console.log("getDowinloadERR");
+  //   console.log(error);
+  //   // Handle any errors
+  // });
 
-  const Viewloading=()=>{
-    return(
-      <p>Loadingテスト</p>
-    );
+    console.log("デバッグコンソール", moviefile_path);
+    console.log("アナフィラキシーショック", markerpatternfile_path);
   }
 
-  const ViewAR=()=>{
-    return (
-      <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
-      <a-assets timeout="600000">
+  return (
+    <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
+      <a-assets timeout="30000">
         <video
           autoPlay
+          muted
           id="movie"
           src={moviefile_path}
-          // loop={true}
+          loop={true}
           preload="auto"
         ></video>
-        {/* <audio src={moviefile_path} autoPlay></audio> */}
+        <audio id="movie_audio" src={moviefile_path} autoPlay muted></audio>
       </a-assets>
 
-      {/* <a-marker preset="hiro"> */}
-      <a-marker type="pattern" url={markerpatternfile_path}>
+      <a-marker preset="hiro">
+      {/* <a-marker type="pattern" url={ markerpatternfile_path }> */}
+        {/* <a-sound id="my_sound01" src="#movie_audio" autoplay="true" loop="true"></a-sound> */}
         <a-video
           src="#movie"
           width="4.6"
@@ -104,19 +75,11 @@ const ARComponent = () => {
           position="0 0 0"
           rotation="0 0 0"
           play="true"
+          autoPlay
         ></a-video>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
-  );
-  }
-
-  return (
-    <>
-      {!loading ? (Viewloading()):(ViewAR())}
-    </>
-    // ViewAR()
-    // Viewloading()
   );
 };
 
