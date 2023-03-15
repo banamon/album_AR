@@ -23,13 +23,13 @@ import { Link, useLocation } from "react-router-dom";
 import THREEx from "./threex-arpatternfile.js";
 
 const MovieUploader = () => {
-  const [DefaultARvalue, setDefaultAR] = React.useState("A")
-
+  const DefaultAROption = [1,2,3,4,5,6];
+  const [DefaultARvalue, setDefaultAR] = React.useState(DefaultAROption[0])
 
   // idの取得
-  const { state } = useLocation();
-  const user_id = state.user_id;
-  // const user_id = "TzxJ9ox39PmW84TgS19x";
+  // const { state } = useLocation();
+  // const user_id = state.user_id;
+  const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const [loading, setLoading] = useState(false);
@@ -106,8 +106,6 @@ const MovieUploader = () => {
         container.appendChild(fullMarkerImage);
 
         console.log("ARマーカー作成完了");
-
-        // 本当はここから下は，ARマーカ作成完了 というボタンを押したら実行する方がいい気がする
 
         // ストレージへ保存⇒あとで関数化
         strageFilePath_ARmarker_img = user_id + "/" + "ARmarker.png";
@@ -191,10 +189,10 @@ const MovieUploader = () => {
   }
 
   const CreateARMaeker = () =>{
-    console.log("選択:" + DefaultARvalue);
+    console.log("最終選択:" + DefaultARvalue);
     innerImageURL = process.env.PUBLIC_URL + "/testsrc/defaultAR/"+DefaultARvalue+".png"
-    updateFullMarkerImage();
-    FinishMakeMarker();
+    // updateFullMarkerImage();
+    // FinishMakeMarker();
   }
 
   // ラジオボタンの値がチェンジされた時
@@ -230,20 +228,14 @@ const MovieUploader = () => {
                 <p>画像アップロード</p>
               </div>
               {/* DefaltARマーカ */}
-              {/* 今後増やすことも考えたら配列で定義してfor文で書きたいね */}
               <div>
-                <label for="Default_A">
-                  <input type="radio" name="DefaultAR" value="A" id="Default_A" style={noradio} onChange={handleChange} checked={"A" === DefaultARvalue}/>
-                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/A.png"} with="40" height="40" style={checkDefaultARmakerstyle("A")}/> 
-                </label>
-                <label for="Default_B">
-                  <input type="radio" name="DefaultAR" value="B" id="Default_B" style={noradio} onChange={handleChange} checked={"B" === DefaultARvalue}/>
-                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/B.png"} with="40" height="40" style={checkDefaultARmakerstyle("B")}/> 
-                </label>
-                <label for="Default_C">
-                  <input type="radio" name="DefaultAR" value="C" id="Default_C" style={noradio} onChange={handleChange} checked={"C" === DefaultARvalue}/>
-                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/C.png"} with="40" height="40" style={checkDefaultARmakerstyle("C")}/> 
-                </label>
+                {DefaultAROption.map(i => (
+                  <label for={"Default_" + i}>
+                    <input type="radio" name="DefaultAR" value={i} id={"Default_" + i} style={noradio} onChange={handleChange} checked={i === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/"+i+".png"} with="200" height="200" style={checkDefaultARmakerstyle(i)}/> 
+                  </label>
+                  ))
+                }
               </div>
               <Button variant="contained" onClick={CreateARMaeker}>
                 ARマーカ作成
