@@ -58,7 +58,7 @@ function MovieUploader() {
         console.log(
           "<progress max= 100" + " value=" + progress + "></progress>"
         );
-        percentage.innerHTML = progress.toFixed() + " %";
+        percentage.innerHTML = progress.toFixed();
         switch (snapshot.state) {
           case "paused":
             console.log("Upload is paused");
@@ -137,26 +137,42 @@ function MovieUploader() {
             </div>
           </nav>
           <img id="step1-progress" src="img/step1-progress.png"/>
-          <p id="nowloading">Now Loading...</p>
-          <progress max="100" value="0" id="loading"></progress>
-          <h3 id="percentage">0 %</h3>
-          {/* <h2 className="nowloading">アップロード中・・・</h2> */}
+          <div id="load-contents">
+            <p id="nowloading">Now Loading...</p>
+            <progress max="100" value="0" id="loading"></progress>
+            <p id="percentage">0</p>
+            <p id="percent">%</p>
+            {/* <h2 className="nowloading">アップロード中・・・</h2> */}
+          </div>
         </div>
       ) : (
         <>
           {isUploaded ? (
-            <>
-              <div id="uploaded-screen">
-                <h2 id="result" className="result">
-                  <p>アップロード完了しました！</p>
-                </h2>
-                <p>
-                  <Link to={"/text"} state={{ user_id }}>
-                    次へ
-                  </Link>
-                </p>
+            <div id="uploaded-screen">
+              <nav>
+                <div className="logo">
+                  <img id="logo-img" src="img/app_icon_v2.png"/>
+                  <h4 id="nav_title">ARバムめーかー</h4>
+                </div>
+                <ul className="nav-links">
+                  <li><a href="#center_ex2">動画投稿</a></li>
+                  <li><a href="#step1_ex4">文字投稿</a></li>
+                  <li><a href="#step2_ex4">マーカー作成</a></li>
+                  <li><a href="#step5_ex4">使い方</a></li>
+                </ul>
+                <div className="burger">
+                  <div className="line1"></div>
+                  <div className="line2"></div>
+                  <div className="line3"></div>
+                </div>
+              </nav>
+              <img id="step1-progress" src="img/step1-progress.png"/>
+              <div id="comp-contents">
+                  <p id="comp-en">completed！</p>
+                  <p id="comp-jp">アップロード完了しました</p>
+                  <p><Link to="/text" state={{ user_id }}><button className="next-litter" ><a>文字の入力へ</a></button></Link></p>
               </div>
-            </>
+            </div>
           ) : (
             <div id="screen">
               <nav>

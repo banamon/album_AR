@@ -229,6 +229,21 @@ nav {
   color: #FF8383;
 }
 
+#uploaded-screen {
+  position: absolute;
+  width: 100%;
+  height: 900px;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* padding: 276px; */
+  background: #FFDDDD;
+  box-sizing: border-box;
+}
+
 .next-button {
   background-color: #FFFFFF; /* ボタンの背景色 */
   border: none; /* ボタンの枠線をなくす */
@@ -252,7 +267,7 @@ nav {
 #load-screen {
   position: absolute;
   width: 100%;
-  height: 800px;
+  height: 900px;
   display: flex;
   /* justify-content: center; */
   text-align: center;
@@ -264,12 +279,26 @@ nav {
   box-sizing: border-box;
 }
 
-#nowloading {
+#load-contents {
   position: relative;
-  /* width: 438px;
+  top: 400px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 72px;
+  background: #FFDDDD;
+}
+
+#nowloading {
+  position: absolute;
+  width: 400px;
   height: 71px;
-  left: 841px;
-  top: 748px; */
+  left: 100px;
+  top: 0px;
   
   font-family: 'Inter';
   font-style: normal;
@@ -281,12 +310,22 @@ nav {
   color: #676262;
 }
 
+#loading {
+  position: absolute;
+  width: 500px;
+  height: 25px;
+  left: 50px;
+  top: 50px;
+  /* box-sizing: border-box; */
+  border: 2px solid #FF8383;
+}
+
 #percentage {
   position: absolute;
-  width: 248px;
-  height: 87px;
-  left: 450px;
-  top: 400px;
+  width: 400px;
+  height: 60px;
+  left: 100px;
+  top: 100px;
 
   font-family: 'Inter';
   font-style: normal;
@@ -296,6 +335,98 @@ nav {
   text-align: center;
 
   color: #FF8383;
+}
+
+#percent {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 330px;
+  top: 118px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 48px;
+  text-align: center;
+
+  color: #FF8383;
+}
+
+#comp-contents {
+  position: relative;
+  top: 400px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 72px;
+  background: #FFDDDD;
+}
+
+#comp-en {
+  position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 100px;
+  top: 0px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 116px;
+  text-align: center;
+  
+  color: #FF8383;
+}
+
+#comp-jp {
+  position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 100px;
+  top: 90px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.next-litter {
+  position: absolute;
+  width: 220px;
+  height: 55px;
+  left: 190px;
+  top: 180px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.next-litter a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 39px;
+  text-align: center;
+  color: #000000;
+}
+
+.next-litter:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 progress {
@@ -308,10 +439,13 @@ progress {
 }
 ::-moz-progress-bar {
   background-color: #FF8383;
+  border-radius: 30px;
 }
 ::-webkit-progress-bar {
   background-color: #FFDDDD;
+  border-radius: 30px;
 }
 ::-webkit-progress-value {
   background-color: #FF8383;
+  border-radius: 30px;
 }
