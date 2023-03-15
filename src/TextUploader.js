@@ -5,16 +5,18 @@ import firebase from "./firebase";
 import {updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes,uploadString} from "firebase/storage";
 // ページ遷移
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+// import {useNavigate} from "react-router-dom"
+
 
 function TextUploader() {
   const [text, setText] = useState("");
   const filename_textimg = "text.png"
 
   // user_idの取得
-  // const { state } = useLocation();
-  // const user_id = state.user_id;
-  const user_id = "TzxJ9ox39PmW84TgS19x";
+  const { state } = useLocation();
+  const user_id = state.user_id;
+  // const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const InputText=(inputText)=>{
@@ -30,6 +32,11 @@ function TextUploader() {
     const filepath = user_id + "/" + filename_textimg;
     updateDB_text(text,filepath);
     upload_textimg(png,filepath);
+
+    console.log("ページ遷移");
+    // ページ遷移 ARマーカ作成
+    // const navigation = useNavigate()
+    // navigation('/marker'); // 画面遷移
   }
 
   // Canvasに文字を描く
@@ -85,7 +92,10 @@ function TextUploader() {
       {/* <p>{text}</p> */}
       <p><canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas></p>
       <input type="text" value={text} onChange={(e) => InputText(e.target.value)}/>
-      <Button onClick={MakeImgText}>決定</Button>
+      <Button onClick={MakeImgText}>
+      <Link to={"/marker"} state={{ user_id }}>決定</Link>
+        
+        </Button>
     </div>
   );
 }
