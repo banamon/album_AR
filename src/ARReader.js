@@ -13,120 +13,135 @@ import { Button } from "@mui/material";
 
 const ARReader = () => {
   const [loading, setLoading] = useState(false);
-
   const [rendered, setRendered] = useState(false);
 
   const storage = getStorage();
-  var user_id = "TzxJ9ox39PmW84TgS19x";
+  // var user_id = "TzxJ9ox39PmW84TgS19x";
+  var user_id = "vhhy6lqOnekfDWBLHmmI";
   console.log("uid取得:" + user_id);
 
-  var moviefile_path =
-    "https://firebasestorage.googleapis.com/v0/b/test-arbum.appspot.com/o/TzxJ9ox39PmW84TgS19x%2FDebug_sax.mp4?alt=media&token=15f967f7-cae9-48d2-bf1b-a5b46cce5481";
+  // var moviefile_path =
+  // "https://firebasestorage.googleapis.com/v0/b/test-arbum.appspot.com/o/TzxJ9ox39PmW84TgS19x%2FDebug_sax.mp4?alt=media&token=15f967f7-cae9-48d2-bf1b-a5b46cce5481";
+  // https://firebasestorage.googleapis.com/v0/b/test-arbum.appspot.com/o/TzxJ9ox39PmW84TgS19x%2FDebug_sax.mp4?alt=media&token=15f967f7-cae9-48d2-bf1b-a5b46cce5481
+  // 動画path（デフォルトを用意）
+  const [moviefile_path, setMoviePath] = useState(
+    process.env.PUBLIC_URL + "/testsrc/Debug.mp4"
+  );
+  // パターンファイルpath
+  const [markerpatternfile_path, setPattaernPath] = useState(
+    process.env.PUBLIC_URL + "/testsrc/pattern-Debugmarker.patt"
+  );
 
-  // テスト用
-  window.onload = function () {
-    console.log("window.onload開始");
-    const videotag = document.getElementById("video");
-    const a_videotag = document.getElementById("a_video");
-    console.log("video", videotag);
-    console.log("a-video", a_videotag);
-    // videotag.src = moviefile_path;
-    // videotag.play();
-    // a_videotag.play();
+  // DB取得予定
+  const moveurl = user_id + "/Debug_sax.mp4";
+  const patturl = user_id + "/ARmarker.patt";
+  if(!loading){
+    GetStrage();
+  }
 
-    const btn01 = document.getElementById("my_btn01");
-    console.log(btn01);
-    btn01.addEventListener("click", (e) => {
-      console.log("click");
-      videotag.play();
-      // a_videotag.play();
-    });
+  async function GetStrage(){
+    console.log("GetStrage");
 
-    const marker = document.getElementById("marker");
-            marker.addEventListener('markerFound', function () {
-              console.log("marker発見");
-              videotag.play();
-            });    
+    // DBへのアクセス
 
-    console.log("デバッグコンソール", moviefile_path);
-  };
 
-  const ClickBtn = () => {
-    console.log("click");
-  };
 
-  const DebugSence = () => {
+    // 動画の取得
+    const FirestoreRef_Movie = ref(storage, moveurl);
+    const url_movie = await getDownloadURL(FirestoreRef_Movie)
+
+    // テキスト画像の取得（あとで作成）
+
+    //  パターンファイルの取得
+    const FirestoreRef_pattarn = ref(storage, patturl);
+    const url_pattarn = await getDownloadURL(FirestoreRef_pattarn)
+
+    console.log(url_movie);
+    setMoviePath(url_movie)
+    console.log(url_pattarn);
+    setPattaernPath(url_pattarn)
+    console.log("Storage取得完了");
+    console.log(moviefile_path);
+    console.log(markerpatternfile_path);
+    
+    setLoading(true);
+  }
+
+  // async function GetDB(){
+  //   var paths;
+
+  //   return paths
+  // }
+
+  // const FirestoreRef_Movie = ref(storage, moveurl);
+  // getDownloadURL(FirestoreRef_Movie)
+  //   .then((url) => {
+  //     console.log("動画取得: " + url);
+  //     setMoviePath(url);
+  //     console.log("動画取得完了");
+  //     // ViewMoviefromMarker()
+  //     setLoading(true);
+  //   })
+  //   .catch((error) => {
+  //     console.err("動画取得ERR: " + error);
+  //     // Handle any errors
+  //   });
+
+  const DebugVIew_Loading = () => {
     return (
-      <a-scene embeded arjs>
-        <a-box color="#0095DD" position="0 1 -4" rotation="0 0 0"></a-box>
-        <a-entity camera></a-entity>
-        {/* <a-entity camera look-controls position="0 2 0"></a-entity> */}
-      </a-scene>
+      <div>
+        <p>ロード中</p>
+      </div>
     );
   };
 
-  const ViewMovie = () => {
+  
+  const DebugVIew = () => {
     return (
-      <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
-        <a-assets timeout="600000">
-          <video
-            autoPlay
-            id="video"
-            src={moviefile_path}
-            // loop={true}
-            preload="auto"
-          ></video>
-        </a-assets>
-        <a-box color="#0011DD" position="0 1 -4" rotation="0 0 0"></a-box>
-
-        <a-video
-          id="a_video"
-          src="#video"
-          width="4.6"
-          height="4.6"
-          position="0 1 -8"
-          rotation="0 0 0"
-          autoPlay
-        ></a-video>
-        <a-entity
-          id="button"
-          click-change
-          geometry="primitive: ring; radiusInner: 0.75; radiusOuter: 0.8"
-          material="color: white; side: double;"
-          raycaster="objects: .clickable"
-        ></a-entity>
-
-        {/* <a-entity camera>
-          <a-cursor></a-cursor>
-        </a-entity> */}
-        <a-image
-          id="my_btn01"
-          src={`${process.env.PUBLIC_URL}/testsrc/test.jpg`}
-          position="0 1.2 -3"
-          scale="0.3 0.3 0.3"
-        ></a-image>
-        <a-camera>
-          <a-cursor></a-cursor>
-        </a-camera>
-      </a-scene>
+      <div>
+        <p>オブジェクト</p>
+        {/* <>{creatediv()}</> */}
+      </div>
     );
   };
+
+  const RecognizeMarker = () => {
+    console.log("マーカ発見 eventたぐ");
+  };
+
+  useEffect(() => {
+    console.log("useEffect呼び出し");
+    if (loading) {
+      // marker発見時の処理
+      const videotag = document.getElementById("video");
+      const marker = document.getElementById("marker");
+      marker.addEventListener("markerFound", function () {
+        console.log("marker発見");
+        videotag.play();
+      });
+    }
+  });
+
+  // const creatediv = () =>{
+  //   const div = document.createElement('div');
+  //   div.className = 'sample';
+  //   return div;
+  // }
 
   const ViewMoviefromMarker = () => {
     return (
       <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
         <a-assets timeout="600000">
-          <video
-            autoPlay
-            id="video"
-            src={moviefile_path}
-            // loop={true}
-            preload="auto"
-          ></video>
+          <video id="video" src={moviefile_path} preload="auto"></video>
         </a-assets>
-        <a-marker preset="hiro" marker id="marker">
-        {/* <a-marker preset="hiro"> */}
-          {/* <a-box color="#0011DD" position="0 0 0" rotation="0 0 0"></a-box> */}
+        <a-marker
+          // markerFound = {RecognizeMarker}
+          type="pattern"
+          url={markerpatternfile_path}
+          marker
+          id="marker"
+        >
+          {/* <a-marker preset="hiro" marker id="marker"> */}
           <a-video
             id="a_video"
             src="#video"
@@ -134,26 +149,20 @@ const ARReader = () => {
             height="4.6"
             position="0 0 0"
             rotation="0 0 0"
-            autoPlay
           ></a-video>
         </a-marker>
-          <a-image
-            id="my_btn01"
-            src={`${process.env.PUBLIC_URL}/testsrc/test.jpg`}
-            position="0 1.2 -3"
-            scale="0.3 0.3 0.3"
-          ></a-image>
-        <a-camera>
-          <a-cursor></a-cursor>
-        </a-camera>
+        <a-camera></a-camera>
       </a-scene>
     );
   };
 
   return (
-    // DebugSence()
-    // ViewMovie()
-    ViewMoviefromMarker()
+    <>
+      {!loading ? DebugVIew_Loading() : ViewMoviefromMarker()}
+      {/* {!loading ? (DebugVIew_Loading()):(DebugVIew())} */}
+      {/* {ViewMoviefromMarker()} */}
+      {/* {DebugVIew_Loading()} */}
+    </>
   );
 };
 
