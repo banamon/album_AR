@@ -27,9 +27,9 @@ const MovieUploader = () => {
   const [DefaultARvalue, setDefaultAR] = React.useState(DefaultAROption[0])
 
   // idの取得
-  // const { state } = useLocation();
-  // const user_id = state.user_id;
-  const user_id = "TzxJ9ox39PmW84TgS19x";
+  const { state } = useLocation();
+  const user_id = state.user_id;
+  // const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const [loading, setLoading] = useState(false);
@@ -191,8 +191,8 @@ const MovieUploader = () => {
   const CreateARMaeker = () =>{
     console.log("最終選択:" + DefaultARvalue);
     innerImageURL = process.env.PUBLIC_URL + "/testsrc/defaultAR/"+DefaultARvalue+".png"
-    // updateFullMarkerImage();
-    // FinishMakeMarker();
+    updateFullMarkerImage();
+    FinishMakeMarker();
   }
 
   // ラジオボタンの値がチェンジされた時
