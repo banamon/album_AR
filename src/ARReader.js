@@ -35,25 +35,28 @@ const ARReader = () => {
   // DB取得予定
   const moveurl = user_id + "/Debug_sax.mp4";
   const patturl = user_id + "/ARmarker.patt";
+
+  // 最初のみデータの取得
   if(!loading){
-    GetStrage();
+    GetData();
   }
 
-  async function GetStrage(){
+  async function GetData(){
     console.log("GetStrage");
 
     // DBへのアクセス
-
-
+    console.log("DBアクセス");
+    const paths = await GetDB(user_id);
+    console.log(paths)
 
     // 動画の取得
-    const FirestoreRef_Movie = ref(storage, moveurl);
+    const FirestoreRef_Movie = ref(storage, paths.movie_path);
     const url_movie = await getDownloadURL(FirestoreRef_Movie)
 
     // テキスト画像の取得（あとで作成）
 
     //  パターンファイルの取得
-    const FirestoreRef_pattarn = ref(storage, patturl);
+    const FirestoreRef_pattarn = ref(storage, paths.marker_path);
     const url_pattarn = await getDownloadURL(FirestoreRef_pattarn)
 
     console.log(url_movie);
@@ -67,25 +70,13 @@ const ARReader = () => {
     setLoading(true);
   }
 
-  // async function GetDB(){
-  //   var paths;
-
-  //   return paths
-  // }
-
-  // const FirestoreRef_Movie = ref(storage, moveurl);
-  // getDownloadURL(FirestoreRef_Movie)
-  //   .then((url) => {
-  //     console.log("動画取得: " + url);
-  //     setMoviePath(url);
-  //     console.log("動画取得完了");
-  //     // ViewMoviefromMarker()
-  //     setLoading(true);
-  //   })
-  //   .catch((error) => {
-  //     console.err("動画取得ERR: " + error);
-  //     // Handle any errors
-  //   });
+  async function GetDB(user_id){
+    var paths = {};
+    const Doc = await getDoc(doc(firebase.db, "arbum_data", user_id));
+    paths.movie_path = Doc.data().movie_path;;
+    paths.marker_path = Doc.data().marker_pattern_path;
+    return paths
+  }
 
   const DebugVIew_Loading = () => {
     return (
@@ -93,20 +84,6 @@ const ARReader = () => {
         <p>ロード中</p>
       </div>
     );
-  };
-
-  
-  const DebugVIew = () => {
-    return (
-      <div>
-        <p>オブジェクト</p>
-        {/* <>{creatediv()}</> */}
-      </div>
-    );
-  };
-
-  const RecognizeMarker = () => {
-    console.log("マーカ発見 eventたぐ");
   };
 
   useEffect(() => {
@@ -121,12 +98,6 @@ const ARReader = () => {
       });
     }
   });
-
-  // const creatediv = () =>{
-  //   const div = document.createElement('div');
-  //   div.className = 'sample';
-  //   return div;
-  // }
 
   const ViewMoviefromMarker = () => {
     return (
