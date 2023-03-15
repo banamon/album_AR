@@ -1,16 +1,134 @@
 header {
   position: absolute;
-  width: 2175px;
+  width: 100%;
   height: 158px;
   left: 0px;
   top: 0px;
   background-color: #FF8383;
+  z-index: 3;
+}
+
+nav {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  top: -0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 90px;
+  background-color: #FF8383;
+  z-index: 19;
+}
+
+.logo {
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Senobi Gothic';
+  font-style: normal;
+  width: 300px;
+}
+
+#logo-img {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 38%;
+  transition: all 0.5s ease-in-out;
+  z-index: 20;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: gray;
+  margin: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-active {
+  transform: translateX(0%) !important;
+  z-index: 20;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    overflow: hidden;
+    /* overflow: scroll; */
+  }
+  .nav-links {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background-color: #FF8383;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+@keyframes navlinksFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transition: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(405deg) translate(-5px, -6px);
 }
 
 #start-screen {
   position: absolute;
   width: 100%;
-  height: 7200px;
+  height: 4400px;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -24,12 +142,10 @@ header {
 
 #title_box {
   position: relative;
-  min-width: 804px;
-  height: 658px;
-  left: 686px;
-  top: 217px;
+  min-width: 400px;
+  height: 340px;
   left: 0px;
-  top: 0px;
+  top: 15px;
   background: #F5F5F5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
@@ -37,33 +153,33 @@ header {
 
 #logo_frame {
   position: absolute;
-  width: 600px;
-  height: 350px;
-  left: 100px;
-  top: 30px;
+  width: 300px;
+  height: 210px;
+  left: 50px;
+  top: 15px;
   background: #FFE7E7;
   border-radius: 30px;
 }
 
 #app_icon {
   position: absolute;
-  width: 275px;
-  height: 275px;
-  left: 162.5px;
-  top: 4px;
+  width: 130px;
+  height: 130px;
+  left: 85px;
+  top: 10px;
 }
 
 #main_logo {
   position: absolute;
-  width: 600px;
-  height: 113.6px;
-  left: 10px;
-  top: 240px;
+  width: 300px;
+  height: 55px;
+  left: 5px;
+  top: 125px;
 
   font-family: 'Senobi Gothic';
   font-style: normal;
   font-weight: 500;
-  font-size: 64px;
+  font-size: 32px;
   line-height: 93px;
   text-align: center;
 
@@ -72,15 +188,15 @@ header {
 
 #main_explane{
   position: absolute;
-  width: 609px;
-  height: 62.16px;
-  left: 100px;
-  top: 450px;
+  width: 300px;
+  height: 30px;
+  left: 50px;
+  top: 225px;
 
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  font-size: 36px;
+  font-size: 18px;
   line-height: 44px;
   text-align: center;
 
@@ -89,24 +205,20 @@ header {
 
 .start-button {
   position: absolute;
-  width: 400px;
-  height: 99.66px;
-  left: 200px;
-  top: 520px;
+  width: 140px;
+  height: 45px;
+  left: 130px;
+  top: 270px;
   background: #FFFFFF;
   border-radius: 10px;
+  text-align: center;
 }
 
 .start-button a {
-  position: absolute;
-  width: 250px;
-  height: 42px;
-  left: 75px;
-  top: 29px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
-  font-size: 32px;
+  font-size: 13px;
   line-height: 39px;
   text-align: center;
   color: #000000;
@@ -119,24 +231,24 @@ header {
 
 #ctachfrase_box {
   position: relative;
-  width: 1000px;
-  height: 280px;
+  width: 500px;
+  height: 140px;
   left: 0px;
-  top: 100px;
+  top: 50px;
   background: #FFDDDD;
   z-index: 1;
 }
 
 #catchfrase {
   position: absolute;
-  width: 1374px;
-  height: 253px;
-  left: -170px;
+  width: 650px;
+  height: 130px;
+  left: -65px;
   top: 0px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
-  font-size: 64px;
+  font-size: 34px;
   line-height: 77px;
   text-align: center;
   color: #02164A;
@@ -144,15 +256,15 @@ header {
 
 #catch_ex_1 {
   position: absolute;
-  width: 1374px;
-  height: 253px;
-  left: -150px;
-  top: 150px;
+  width: 650px;
+  height: 50px;
+  left: -75px;
+  top: 75px;
 
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 18px;
   line-height: 44px;
   text-align: center;
 
@@ -161,19 +273,990 @@ header {
 
 #catch_ex_2 {
   position: absolute;
-  width: 1374px;
-  height: 253px;
-  left: -130px;
-  top: 220px;
+  width: 650px;
+  height: 50px;
+  left: -65px;
+  top: 100px;
 
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 18px;
   line-height: 44px;
   text-align: center;
 
   color: #808080;
+}
+
+#demo_box {
+  position: relative;
+  width: 900px;
+  height: 400px;
+  left: 0px;
+  top: 100px;
+  background: #FF8383;
+  border-radius: 10px;
+}
+
+#demo_img_box {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  left: 50px;
+  top: 25px;
+
+  background: #FFFFFF;
+  border-radius: 30px;
+}
+
+#demo_img {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: 50px;
+  top: 50px;
+}
+
+#demo1_title {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 520px;
+  top: 40px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 58px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo1_ex {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 520px;
+  top: 90px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo2_title {
+  position: absolute;
+  width: 400px;
+  height: 60px;
+  left: 480px;
+  top: 135px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 58px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo2_ex {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 520px;
+  top: 185px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo2_ex2 {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 520px;
+  top: 205px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo3_title {
+  position: absolute;
+  width: 400px;
+  height: 60px;
+  left: 480px;
+  top: 250px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 58px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo3_ex {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 520px;
+  top: 300px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#demo3_ex2 {
+  position: absolute;
+  width: 320px;
+  height: 60px;
+  left: 520px;
+  top: 320px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#center_ex {
+  position: relative;
+  width: 700px;
+  height: 70px;
+  left: 0px;
+  top: 130px;
+  background: #FFDDDD;
+  /* background: #FFFFFF; */
+}
+
+#center_ex1 {
+  position: absolute;
+  width: 700px;
+  height: 50px;
+  left: 0px;
+  top: 0px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#center_ex2 {
+  position: absolute;
+  width: 700px;
+  height: 50px;
+  left: 0px;
+  top: 25px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+
+  color: #808080;
+}
+
+#how_to_use {
+  position: relative;
+  width: 900px;
+  height: 2970px;
+  left: 0px;
+  top: 140px;
+
+  background: #FF8383;
+  border-radius: 30px;
+}
+
+#how_to_use_string {
+  position: absolute;
+  width: 500px;
+  height: 150px;
+  left: 200px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+#step1_box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  left: 50px;
+  top: 90px;
+  background: #FFDDDD;
+  border-radius: 30px;
+}
+
+#step1_title {
+  position: absolute;
+  width: 400px;
+  height: 70px;
+  left: 200px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+  z-index: 3;
+
+  color: #FF8383;
+}
+
+#step1_ex1 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 120px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step1_ex2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 145px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step1_ex3 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 240px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step1_ex4 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 265px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step1_img {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 510px;
+  top: 140px;
+}
+
+#step2_box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  left: 50px;
+  top: 580px;
+  background: #FFDDDD;
+  border-radius: 30px;
+}
+
+#step2_title {
+  position: absolute;
+  width: 400px;
+  height: 70px;
+  left: 200px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+  z-index: 3;
+
+  color: #FF8383;
+}
+
+#step2_ex1 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 120px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step2_ex2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 145px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step2_ex3 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 240px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step2_ex4 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 265px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step2_img {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 510px;
+  top: 140px;
+}
+
+#step3_box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  left: 50px;
+  top: 1060px;
+  background: #FFDDDD;
+  border-radius: 30px;
+}
+
+#step3_title {
+  position: absolute;
+  width: 500px;
+  height: 70px;
+  left: 150px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+  z-index: 3;
+
+  color: #FF8383;
+}
+
+#step3_ex1 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 120px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step3_ex2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 145px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step3_ex3 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 240px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step3_ex4 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 265px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step3_ex5 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 290px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step3_img {
+  position: absolute;
+  width: 170px;
+  height: 220px;
+  left: 510px;
+  top: 115px;
+}
+
+#step4_box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  left: 50px;
+  top: 1540px;
+  background: #FFDDDD;
+  border-radius: 30px;
+}
+
+#step4_title {
+  position: absolute;
+  width: 600px;
+  height: 70px;
+  left: 100px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+  z-index: 3;
+
+  color: #FF8383;
+}
+
+#step4_ex1 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 120px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step4_ex2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 145px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step4_ex2-2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 170px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step4_ex3 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 255px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step4_ex4 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 280px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step4_img {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 510px;
+  top: 140px;
+  box-sizing: border-box;
+  border: 6px solid #FF8383;
+}
+
+#step5_box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  left: 50px;
+  top: 2020px;
+  background: #FFDDDD;
+  border-radius: 30px;
+}
+
+#step5_title {
+  position: absolute;
+  width: 600px;
+  height: 70px;
+  left: 100px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+  z-index: 3;
+
+  color: #FF8383;
+}
+
+#step5_ex1 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 120px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step5_ex2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 145px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step5_ex3 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 255px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step5_ex4 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 280px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step5_img {
+  position: absolute;
+  width: 170px;
+  height: 210px;
+  left: 510px;
+  top: 120px;
+}
+
+#step6_box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  left: 50px;
+  top: 2500px;
+  background: #FFDDDD;
+  border-radius: 30px;
+}
+
+#step6_title {
+  position: absolute;
+  width: 600px;
+  height: 70px;
+  left: 100px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 34px;
+  line-height: 77px;
+  text-align: center;
+  z-index: 3;
+
+  color: #FF8383;
+}
+
+#step6_ex1 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 120px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step6_ex2 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 145px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step6_ex3 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 255px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step6_ex4 {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+  left: 70px;
+  top: 280px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+#step6_img {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 510px;
+  top: 140px;
+}
+
+#page-last {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  left: 0px;
+  top: 245px;
+  background: #FFDDDD;
+  display: flex;
+  text-align: center;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+#lets-try {
+  /* position: absolute; */
+  width: 700px;
+  height: 100px;
+  left: 200px;
+  top: 0px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 77px;
+  text-align: center;
+  
+  color: #011853;
+}
+
+#lets-ex {
+  /* position: absolute; */
+  width: 700px;
+  height: 100px;
+  left: -150px;
+  top: 90px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #808080;
+}
+
+.lets-use {
+  /* position: absolute; */
+  width: 180px;
+  height: 55px;
+  left: 110px;
+  top: 140px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.lets-use a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 39px;
+  text-align: center;
+  color: #000000;
+}
+
+.lets-use:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }
 
 .App {

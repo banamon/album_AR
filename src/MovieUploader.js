@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import ImageLogo from "./movie.svg";
 import "./MovieUpload.css";
-import CircleProgress from "./CircleProgress";
 // firebase
 import firebase from "./firebase";
 import { collection, addDoc } from "firebase/firestore";
