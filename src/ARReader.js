@@ -16,6 +16,11 @@ const ARReader = () => {
   const [rendered, setRendered] = useState(false);
 
   const storage = getStorage();
+  
+    // id取得
+  // let url = new URL(window.location.href);
+  // let params = url.searchParams;
+  // var user_id = params.get("user_id");
   // var user_id = "TzxJ9ox39PmW84TgS19x";
   var user_id = "vhhy6lqOnekfDWBLHmmI";
   console.log("uid取得:" + user_id);
@@ -31,6 +36,7 @@ const ARReader = () => {
   const [markerpatternfile_path, setPattaernPath] = useState(
     process.env.PUBLIC_URL + "/testsrc/pattern-Debugmarker.patt"
   );
+  const text = "Hello World";
 
   // DB取得予定
   const moveurl = user_id + "/Debug_sax.mp4";
@@ -70,6 +76,7 @@ const ARReader = () => {
     setLoading(true);
   }
 
+
   async function GetDB(user_id){
     var paths = {};
     const Doc = await getDoc(doc(firebase.db, "arbum_data", user_id));
@@ -83,6 +90,7 @@ const ARReader = () => {
       <div>
         <p>ロード中</p>
       </div>
+
     );
   };
 
@@ -127,6 +135,20 @@ const ARReader = () => {
     );
   };
 
+  const Debug_View_text = () =>{
+    console.log("Debug_View_text");
+    return (
+      <a-scene>
+      {/* <a-scene vr-mode-ui="enabled: true" style="position:fixed;top:0;"> */}
+      <a-box position="0 1.5 -8" rotation="0 0 0" color="#4CC3D9"></a-box>
+
+      {/* <a-plane position="-1.5 2 -1" width="2" height="0.5" material="shader:html;target: #target1;"></a-plane> */}
+  
+      <a-entity mb-text position="0 1.5 -2" data-text="さんぷる"></a-entity>
+    </a-scene>
+    )
+  }
+
   return (
     <>
       {!loading ? DebugVIew_Loading() : ViewMoviefromMarker()}
@@ -134,7 +156,8 @@ const ARReader = () => {
       {/* {ViewMoviefromMarker()} */}
       {/* {DebugVIew_Loading()} */}
     </>
+
   );
 };
 
-export default ARReader;
+export default ARComponent;

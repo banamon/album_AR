@@ -23,9 +23,13 @@ import { Link, useLocation } from "react-router-dom";
 import THREEx from "./threex-arpatternfile.js";
 
 const MovieUploader = () => {
+  const [DefaultARvalue, setDefaultAR] = React.useState("A")
+
+
   // idの取得
   const { state } = useLocation();
   const user_id = state.user_id;
+  // const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const [loading, setLoading] = useState(false);
@@ -83,9 +87,6 @@ const MovieUploader = () => {
     var patternRatio = 0.6;
     var imageSize = 512;
     var borderColor = "black";
-    // var patternRatio = document.querySelector('#patternRatioSlider').value/100
-    // var imageSize = document.querySelector('#imageSize').value
-    // var borderColor = document.querySelector('#borderColor').value
 
     THREEx.ArPatternFile.buildFullMarker(
       innerImageURL,
@@ -165,24 +166,41 @@ const MovieUploader = () => {
   };
 
   const DownloadQR = () =>{
-  //   var domElement = window.document.createElement("a");
-  //   domElement.href = "https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=" + qr_path;
-  //   // domElement.href = qr_path;
-  //   // domElement.download = qr_path;
-  //   domElement.download = "qr-code.png";
-  //   document.body.appendChild(domElement);
-  //   domElement.click();
-  //   document.body.removeChild(domElement);
-
-     let canvas = document.getElementById("canvas_qr");
-
-     let link = document.createElement("a");
-     link.href = canvas.toDataURL("image/png");
-     link.download = "qr-code.png";
-     link.click();
-
-
+    let canvas = document.getElementById("canvas_qr");
+    let link = document.createElement("a");
+    link.href = canvas.toDataURL("image/png");
+    link.download = "qr-code.png";
+    link.click();
   }
+
+  const noradio = {
+    display: 'none'
+  };
+
+  // 選択したときのスタイル
+  const checkDefaultARmakerstyle = (value) => {
+    if(value == DefaultARvalue){
+      return {
+        border:'3px solid #000'
+      }
+    }else{
+      return {
+        border:'none'
+      }
+    }
+  }
+
+  const CreateARMaeker = () =>{
+    console.log("選択:" + DefaultARvalue);
+    innerImageURL = process.env.PUBLIC_URL + "/testsrc/defaultAR/"+DefaultARvalue+".png"
+    updateFullMarkerImage();
+    FinishMakeMarker();
+  }
+
+  // ラジオボタンの値がチェンジされた時
+  const handleChange = (e) => {
+    setDefaultAR(e.target.value);
+  };
 
   return (
     <>
@@ -211,6 +229,28 @@ const MovieUploader = () => {
                 <h2>ARマーカ作成</h2>
                 <p>画像アップロード</p>
               </div>
+              {/* DefaltARマーカ */}
+              {/* 今後増やすことも考えたら配列で定義してfor文で書きたいね */}
+              <div>
+                <label for="Default_A">
+                  <input type="radio" name="DefaultAR" value="A" id="Default_A" style={noradio} onChange={handleChange} checked={"A" === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/A.png"} with="40" height="40" style={checkDefaultARmakerstyle("A")}/> 
+                </label>
+                <label for="Default_B">
+                  <input type="radio" name="DefaultAR" value="B" id="Default_B" style={noradio} onChange={handleChange} checked={"B" === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/B.png"} with="40" height="40" style={checkDefaultARmakerstyle("B")}/> 
+                </label>
+                <label for="Default_C">
+                  <input type="radio" name="DefaultAR" value="C" id="Default_C" style={noradio} onChange={handleChange} checked={"C" === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/C.png"} with="40" height="40" style={checkDefaultARmakerstyle("C")}/> 
+                </label>
+              </div>
+              <Button variant="contained" onClick={CreateARMaeker}>
+                ARマーカ作成
+              </Button>
+              
+
+
               <div className="movieUplodeBox">
                 <div className="movieLogoAndText">
                   <img src={ImageLogo} alt="imagelogo" />
@@ -247,7 +287,7 @@ const MovieUploader = () => {
               <div id="imageContainer"></div>
               {/* <img id="qr-code" src="qr-code.png" alt="qr-code" className="qr-code"/> */}
               {/* <QRCodeSVG value="https://reactjs.org/" /> */}
-              <input id="patternRation" class="mdl-silder" type="range" min="10" max="90" value="50" tabIndex="0">
+              <input id="patternRation" className="mdl-silder" type="range" min="10" max="90" value="50" tabIndex="0">
               </input>
 
             </div>
