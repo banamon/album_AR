@@ -119,10 +119,28 @@ function MovieUploader() {
     <>
       {loading ? (
         <div id="load-screen">
+          <nav>
+            <div className="logo">
+              <img id="logo-img" src="img/app_icon_v2.png"/>
+              <h4 id="nav_title">ARバムめーかー</h4>
+            </div>
+            <ul className="nav-links">
+              <li><a href="#center_ex2">動画投稿</a></li>
+              <li><a href="#step1_ex4">文字投稿</a></li>
+              <li><a href="#step2_ex4">マーカー作成</a></li>
+              <li><a href="#step5_ex4">使い方</a></li>
+            </ul>
+            <div className="burger">
+              <div className="line1"></div>
+              <div className="line2"></div>
+              <div className="line3"></div>
+            </div>
+          </nav>
+          <img id="step1-progress" src="img/step1-progress.png"/>
+          <p id="nowloading">Now Loading...</p>
           <progress max="100" value="0" id="loading"></progress>
-          {/* <CircleProgress id="loading" value={0.5} size={100} color="#ff0000" emptyColor="#eee" /> */}
           <h3 id="percentage">0 %</h3>
-          <h2 className="nowloading">アップロード中・・・</h2>
+          {/* <h2 className="nowloading">アップロード中・・・</h2> */}
         </div>
       ) : (
         <>
@@ -140,41 +158,60 @@ function MovieUploader() {
               </div>
             </>
           ) : (
-            <div className="outerBox">
-              <div className="title">
-                <h2>動画アップローダー</h2>
-                <p>mp4の画像ファイル</p>
-              </div>
-              <div className="movieUplodeBox">
-                <div className="movieLogoAndText">
-                  <img src={ImageLogo} alt="imagelogo" />
-                  <p>ここにドラッグ＆ドロップしてください</p>
+            <div id="screen">
+              <nav>
+                <div className="logo">
+                  <img id="logo-img" src="img/app_icon_v2.png"/>
+                  <h4 id="nav_title">ARバムめーかー</h4>
                 </div>
-                <input
-                  className="movieUploadInput"
-                  multiple
-                  name="movieURL"
-                  type="file"
-                  accept=".mp4"
-                  onChange={OnFileUplodeToFirebase}
-                />
+                <ul className="nav-links">
+                  <li><a href="#center_ex2">動画投稿</a></li>
+                  <li><a href="#step1_ex4">文字投稿</a></li>
+                  <li><a href="#step2_ex4">マーカー作成</a></li>
+                  <li><a href="#step5_ex4">使い方</a></li>
+                </ul>
+                <div className="burger">
+                  <div className="line1"></div>
+                  <div className="line2"></div>
+                  <div className="line3"></div>
+                </div>
+              </nav>
+              <img id="step1-progress" src="img/step1-progress.png"/>
+              <p id="step1-ex1">表示したい動画を</p>
+              <p id="step1-ex2">アップロードしてください</p>
+              <div className="outerBox">
+                <div className="title">
+                  <h2>動画の選択</h2>
+                  <p>mp4の画像ファイル</p>
+                </div>
+                <div className="movieUplodeBox">
+                  <div className="movieLogoAndText">
+                    <img src="img/step1.png" alt="imagelogo" />
+                    <p>ここにドラッグ＆ドロップしてください</p>
+                  </div>
+                  <input
+                    className="movieUploadInput"
+                    multiple
+                    name="movieURL"
+                    type="file"
+                    accept=".mp4"
+                    onChange={OnFileUplodeToFirebase}
+                  />
+                </div>
+                <p>または</p>
+                <Button id="choice-button" variant="contained">
+                  ファイルを選択
+                  <input
+                    className="movieUploadInput"
+                    type="file"
+                    onChange={OnFileUplodeToFirebase}
+                    accept=".mp4"
+                  />
+                </Button>
+                {/* <Button variant="contained" onClick={ClickpageToMakeMarker}>
+                  ページ遷移
+                </Button> */}
               </div>
-              <p>または</p>
-              <Button variant="contained">
-                ファイルを選択
-                <input
-                  className="movieUploadInput"
-                  type="file"
-                  onChange={OnFileUplodeToFirebase}
-                  accept=".mp4"
-                />
-              </Button>
-              <Button variant="contained" onClick={ClickpageToMakeMarker}>
-                ページ遷移
-              </Button>
-              {/* <Link to={{pathname: "/marker"}, state: "テキストだよ"}>
-                ページ遷移リンク
-              </Link> */}
             </div>
           )}
         </>
