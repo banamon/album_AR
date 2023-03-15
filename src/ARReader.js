@@ -11,7 +11,7 @@ import { Button } from "@mui/material";
 // import "ar.js";
 // import { ARCanvas, ARMarker } from "react-three-arjs"
 
-const ARReader = () => {
+const ARComponent = () => {
   const [loading, setLoading] = useState(false);
   const [rendered, setRendered] = useState(false);
 
