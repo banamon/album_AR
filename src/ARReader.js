@@ -25,7 +25,7 @@ const ARReader = () => {
 
   // テスト用
   window.onload = function () {
-    console.log("whindoq.onload開始");
+    console.log("window.onload開始");
     const videotag = document.getElementById("video");
     const a_videotag = document.getElementById("a_video");
     console.log("video", videotag);
@@ -41,6 +41,12 @@ const ARReader = () => {
       videotag.play();
       // a_videotag.play();
     });
+
+    const marker = document.getElementById("marker");
+            marker.addEventListener('markerFound', function () {
+              console.log("marker発見");
+              videotag.play();
+            });    
 
     console.log("デバッグコンソール", moviefile_path);
   };
@@ -118,7 +124,8 @@ const ARReader = () => {
             preload="auto"
           ></video>
         </a-assets>
-        <a-marker preset="hiro">
+        <a-marker preset="hiro" marker id="marker">
+        {/* <a-marker preset="hiro"> */}
           {/* <a-box color="#0011DD" position="0 0 0" rotation="0 0 0"></a-box> */}
           <a-video
             id="a_video"
