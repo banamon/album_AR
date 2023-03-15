@@ -132,7 +132,7 @@ nav {
 
 .outerBox {
   position: relative;
-  top: 430px;
+  top: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,10 +196,10 @@ nav {
 }
 
 #step1-ex1 {
-  position: absolute;
+  position: relative;
   width: 300px;
   height: 60px;
-  left: 460px;
+  left: 0px;
   top: 280px;
   
   font-family: 'Inter';
@@ -213,11 +213,11 @@ nav {
 }
 
 #step1-ex2 {
-  position: absolute;
+  position: relative;
   width: 500px;
   height: 60px;
-  left: 370px;
-  top: 330px;
+  left: 0px;
+  top: 250px;
   
   font-family: 'Inter';
   font-style: normal;
@@ -247,6 +247,55 @@ nav {
 .next-button:hover {
   background-color: #4EB4F2; /* ボタンのホバーエフェクト時の背景色 */
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+#load-screen {
+  position: absolute;
+  width: 100%;
+  height: 800px;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* padding: 276px; */
+  background: #FFDDDD;
+  box-sizing: border-box;
+}
+
+#nowloading {
+  position: relative;
+  /* width: 438px;
+  height: 71px;
+  left: 841px;
+  top: 748px; */
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 48px;
+  text-align: center;
+  
+  color: #676262;
+}
+
+#percentage {
+  position: absolute;
+  width: 248px;
+  height: 87px;
+  left: 450px;
+  top: 400px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 77px;
+  text-align: center;
+
+  color: #FF8383;
 }
 
 progress {
