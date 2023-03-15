@@ -6,12 +6,13 @@ import { ref, getStorage, getDownloadURL } from "firebase/storage";
 
 const ARComponent = () => {
   const [loading, setLoading] = useState(false);
+  const videotag = document.getElementById("video");
 
   // id取得
-  // let url = new URL(window.location.href);
-  // let params = url.searchParams;
-  // var user_id = params.get("user_id");
-  var user_id = "TzxJ9ox39PmW84TgS19x";
+  let url = new URL(window.location.href);
+  let params = url.searchParams;
+  var user_id = params.get("user_id");
+  // var user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("uid取得:" + user_id);
 
   // 動画path（デフォルトを用意）
@@ -22,6 +23,7 @@ const ARComponent = () => {
   const [markerpatternfile_path, setPattaernPath] = useState(
     process.env.PUBLIC_URL + "/testsrc/pattern-Debugmarker.patt"
   );
+  const text = "Hello World";
 
   const conectDB = async () => {
     // DBからpathの取得 非同期処理注意
@@ -52,6 +54,7 @@ const ARComponent = () => {
         console.log("動画取得: " + url);
         // setMoviePath(url)
         console.log("動画取得完了");
+        videotag.src = url;
         return url;
       })
       .catch((error) => {
@@ -75,6 +78,29 @@ const ARComponent = () => {
       });
   };
 
+  const aframeMutlByte = () =>{
+    console.log("aframeMutlByte");
+    document.querySelectorAll('[mb-text]:empty').forEach(mb_text=>{
+      console.log(mb_text.dataset.text)
+      const text  =mb_text.dataset.text
+      const text_cnt = text.length
+      const width = text_cnt*1.4
+      const height= 1.6
+      let cvs = document.createElement('canvas')
+      let ctx = cvs.getContext('2d')
+      cvs.width = width*100
+      cvs.height = height*100
+      ctx.fillStyle = "rgb(0, 0, 0)"
+      ctx.font = '100pt Arial'
+      ctx.fillText(text,0,125)
+
+      const base64 = cvs.toDataURL("image/png")
+      mb_text.innerHTML=`<a-image scale="${(width)/10} ${height/10} 1" src="${base64}"></a-image>`
+    })  
+  }
+    aframeMutlByte();
+
+
   const Viewloading=()=>{
     return(
       <p>Loadingテスト</p>
@@ -87,7 +113,7 @@ const ARComponent = () => {
       <a-assets timeout="600000">
         <video
           autoPlay
-          id="movie"
+          id="video"
           src={moviefile_path}
           // loop={true}
           preload="auto"
@@ -111,12 +137,27 @@ const ARComponent = () => {
   );
   }
 
+  const Debug_View_text = () =>{
+    console.log("Debug_View_text");
+    return (
+      <a-scene>
+      {/* <a-scene vr-mode-ui="enabled: true" style="position:fixed;top:0;"> */}
+      <a-box position="0 1.5 -8" rotation="0 0 0" color="#4CC3D9"></a-box>
+
+      {/* <a-plane position="-1.5 2 -1" width="2" height="0.5" material="shader:html;target: #target1;"></a-plane> */}
+  
+      <a-entity mb-text position="0 1.5 -2" data-text="さんぷる"></a-entity>
+    </a-scene>
+    )
+  }
+
   return (
-    <>
-      {!loading ? (Viewloading()):(ViewAR())}
-    </>
+    // <>
+    //   {!loading ? (Viewloading()):(ViewAR())}
+    // </>
     // ViewAR()
     // Viewloading()
+    Debug_View_text()
   );
 };
 
