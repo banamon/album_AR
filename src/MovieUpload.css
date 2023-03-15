@@ -1,4 +1,138 @@
+nav {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  top: -0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 90px;
+  background-color: #FF8383;
+  z-index: 19;
+}
+
+.logo {
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Senobi Gothic';
+  font-style: normal;
+  width: 300px;
+}
+
+#logo-img {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 38%;
+  transition: all 0.5s ease-in-out;
+  z-index: 20;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: gray;
+  margin: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-active {
+  transform: translateX(0%) !important;
+  z-index: 20;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    overflow: hidden;
+    /* overflow: scroll; */
+  }
+  .nav-links {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background-color: #FF8383;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+@keyframes navlinksFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transition: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(405deg) translate(-5px, -6px);
+}
+
+#screen {
+  position: absolute;
+  width: 100%;
+  height: 1200px;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* padding: 276px; */
+  background: #FFDDDD;
+  box-sizing: border-box;
+}
+
 .outerBox {
+  position: relative;
+  top: 430px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +152,7 @@
 }
 
 .movieUplodeBox {
-  border: 2px dashed #4EB4F2;
+  border: 2px dashed #FF8383;
   padding: 35px 60px;
   position: relative;
 }
@@ -37,10 +171,68 @@
   cursor: pointer;
 }
 
+#choice-button {
+  box-sizing: border-box;
+  /* position: absolute; */
+  width: 230px;
+  height: 55px;
+  /* left: 883px; */
+  /* top: 1820px; */
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  font-size: 18px; /* ボタンの文字の大きさ */
+  font-weight: bold;
+  font-family: 'Inter';
+  font-style: normal;
+}
+
+#step1-progress {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 150px;
+}
+
+#step1-ex1 {
+  position: absolute;
+  width: 300px;
+  height: 60px;
+  left: 460px;
+  top: 280px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 77px;
+  text-align: center;
+  
+  color: #FF8383;
+}
+
+#step1-ex2 {
+  position: absolute;
+  width: 500px;
+  height: 60px;
+  left: 370px;
+  top: 330px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 77px;
+  text-align: center;
+  
+  color: #FF8383;
+}
+
 .next-button {
-  background-color: #4EB4F2; /* ボタンの背景色 */
+  background-color: #FFFFFF; /* ボタンの背景色 */
   border: none; /* ボタンの枠線をなくす */
-  color: white; /* ボタンの文字色 */
+  color: 000000; /* ボタンの文字色 */
   padding: 12px 32px; /* ボタンの内側の余白 */
   text-align: center; /* ボタンの中央揃え */
   text-decoration: none; /* ボタンの下線をなくす */
