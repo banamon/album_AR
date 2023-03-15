@@ -107,6 +107,11 @@ const Home = () => {
               <p id="center_ex2">専用のwebページで読み込むことで投稿した動画を視聴することができます。</p>
             </div>
             <div id="how_to_use">
+              <img id="step1-2-arrow" src="img/arrow.png"/>
+              <img id="step2-3-arrow" src="img/arrow.png"/>
+              <img id="step3-4-arrow" src="img/arrow.png"/>
+              <img id="step4-5-arrow" src="img/arrow.png"/>
+              <img id="step5-6-arrow" src="img/arrow.png"/>
               <p id="how_to_use_string">つかいかた</p>
               <div id="step1_box">
                 <p id="step1_title">Step1：動画の投稿</p>
