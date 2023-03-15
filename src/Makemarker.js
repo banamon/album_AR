@@ -27,9 +27,9 @@ const MovieUploader = () => {
 
 
   // idの取得
-  // const { state } = useLocation();
-  // const user_id = state.user_id;
-  const user_id = "TzxJ9ox39PmW84TgS19x";
+  const { state } = useLocation();
+  const user_id = state.user_id;
+  // const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const [loading, setLoading] = useState(false);
@@ -87,9 +87,6 @@ const MovieUploader = () => {
     var patternRatio = 0.6;
     var imageSize = 512;
     var borderColor = "black";
-    // var patternRatio = document.querySelector('#patternRatioSlider').value/100
-    // var imageSize = document.querySelector('#imageSize').value
-    // var borderColor = document.querySelector('#borderColor').value
 
     THREEx.ArPatternFile.buildFullMarker(
       innerImageURL,
@@ -197,6 +194,7 @@ const MovieUploader = () => {
     console.log("選択:" + DefaultARvalue);
     innerImageURL = process.env.PUBLIC_URL + "/testsrc/defaultAR/"+DefaultARvalue+".png"
     updateFullMarkerImage();
+    FinishMakeMarker();
   }
 
   // ラジオボタンの値がチェンジされた時

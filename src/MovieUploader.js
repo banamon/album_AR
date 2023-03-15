@@ -133,7 +133,7 @@ function MovieUploader() {
                   <p>アップロード完了しました！</p>
                 </h2>
                 <p>
-                  <Link to={"/marker"} state={{ user_id }}>
+                  <Link to={"/text"} state={{ user_id }}>
                     次へ
                   </Link>
                 </p>
