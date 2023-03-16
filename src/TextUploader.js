@@ -11,7 +11,7 @@ import { borderRadius } from "@mui/system";
 // import {useNavigate} from "react-router-dom"
 
 function TextUploader() {
-  const [text, setText] = useState("おめでとう！");
+  const [text, setText] = useState("");
   const filename_textimg = "text.png";
   const maxcharnum = 20;
 
