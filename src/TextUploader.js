@@ -23,9 +23,9 @@ function TextUploader() {
   console.log(fontcolors);
 
   // user_idの取得
-  // const { state } = useLocation();
-  // const user_id = state.user_id;
-  const user_id = "TzxJ9ox39PmW84TgS19x";
+  const { state } = useLocation();
+  const user_id = state.user_id;
+  // const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const InputText = (inputText) => {
@@ -57,11 +57,8 @@ function TextUploader() {
 
   // Canvasに文字を描く
   const drawText = (text) => {
-    // デバッグ
     var fillcolor = fontcolors[selectedfontcolors_index].fill;
     var strokecolor = fontcolors[selectedfontcolors_index].stroke;
-    // var fillcolor = "#00FFFF";
-    // var strokecolor = "#FF0000	";
     // var fonts = [ 'serif','Segoe Print', 'san-serif', 'ＭＳ 明朝',"fantasy"];
     var fonts_index = 1;
 
