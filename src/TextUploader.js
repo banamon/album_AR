@@ -208,13 +208,12 @@ function TextUploader() {
         <p id="text-ex2">文字を入力してください</p>
         {/* <p id="text-ex3">({maxcharnum}文字以内)</p> */}
         {/* <p>{text}</p> */}
-        <p><canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas></p>
+        <canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas>
         <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum} placeholder={maxcharnum + "文字以内"}/>
-        <p /><br />
         {fontcolors.map((colors,index)=>(
             <label key={index}>
               <>{console.log("インデックスの中身", index)}</>
-              <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index}/>
+              <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index} />
               <div className="coloroptionbox" style={fontcolor_boxstyle(colors)} id={"font-color-" + index}></div>
             </label>
         ))}

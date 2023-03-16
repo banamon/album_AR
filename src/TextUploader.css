@@ -1,3 +1,7 @@
+:root {
+  background-color: #FFDDDD;
+}
+
 nav {
   position: fixed;
   margin: 0;
@@ -219,6 +223,9 @@ nav {
 
 #preview {
 	position: absolute;
+  /* width: 500px;
+  height: 250px;
+  left: 50px; */
 	top: 100px;
 	left: 150px;
 }

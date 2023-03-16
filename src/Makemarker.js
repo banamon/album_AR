@@ -27,9 +27,9 @@ const MovieUploader = () => {
   const [DefaultARvalue, setDefaultAR] = React.useState(DefaultAROption[0])
 
   // idの取得
-  // const { state } = useLocation();
-  // const user_id = state.user_id;
-  const user_id = "TzxJ9ox39PmW84TgS19x";
+  const { state } = useLocation();
+  const user_id = state.user_id;
+  // const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ const MovieUploader = () => {
   var strageFilePath_ARmarker_pattern = null;
 
   // 卒アルQR
-  var qr_path = "https://test-arbum.web.app/reader?user_id=" + user_id;
+  var qr_path = "https://arbummaker.web.app/reader?user_id=" + user_id;
 
   // DBにARマーカーの情報を格納
   const updateDB_ARmarker = async () => {
@@ -181,7 +181,7 @@ const MovieUploader = () => {
                       <QRCodeCanvas id = "canvas_qr" value={qr_path} />,
                     </div>
                       <Button id="qr-dl" variant="contained" onClick={DownloadQR}><a>共有</a></Button>
-                      <Button id="access" ><a>専用ページにアクセス</a></Button>
+                      <Button id="access" ><Link to={qr_path} ><a>専用ページにアクセス</a></Link></Button>
                   </div>
                 </div>
               </div>
@@ -216,18 +216,19 @@ const MovieUploader = () => {
                 {DefaultAROption.map(i => (
                   <label for={"Default_" + i}>
                     <input type="radio" name="DefaultAR" value={i} id={"Default_" + i} style={noradio} onChange={handleChange} checked={i === DefaultARvalue}/>
-                  <img src={process.env.PUBLIC_URL + "/defaultAR/pattern-"+i+".png"} with="200" height="200" style={checkDefaultARmakerstyle(i)}/> 
+                  <img className="marker" id={i} src={process.env.PUBLIC_URL + "/defaultAR/pattern-"+i+".png"} with="200" height="200" style={checkDefaultARmakerstyle(i)}/> 
                   </label>
                   ))
                 }
-                {/* <Button variant="contained" onClick={CreateARMaeker}>
-                  ARマーカ作成
-                </Button> */}
-                <Button variant="contained" onClick={FinishMakeMarker}>
-                  決定
+                </div>
+                <div id="buttons">
+                <Button variant="contained" onClick={FinishMakeMarker} id="next">
+                  <a>決定して次へ</a>
                 </Button>
+                {/* <Button variant="contained" onClick={FinishMakeMarker}>
+                  ARマーカ作成を完了する
+                </Button> */}
               </div>
-
               {/* ARマーカのプレビュー表示 */}
               {/* <div id="imageContainer"></div> */}
             </div>

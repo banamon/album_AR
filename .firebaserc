@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "test-arbum"
-  }
+  },
+  "targets": {
+    "test-arbum": {
+      "hosting": {
+        "main": [
+          "arbummaker"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

@@ -52,7 +52,7 @@ const Home = () => {
     return (
       <html>
         <head>
-          <title>Welcome</title>
+          <title></title>
           <link rel="stylesheet" type="text/css" href="../css/style.css"/>
           {/* <ParticlesBackground /> */}
         </head>
@@ -75,38 +75,42 @@ const Home = () => {
                 <div className="line3"></div>
               </div>
             </nav>
-
-            <div id="title_box">
-              <div id="logo_frame">
-                <img id="app_icon" src="img/app_icon_v2.png"/>
-                <p id="main_logo" >ARバムめーかー</p>
+            <div id="back">
+              <div id="title_box">
+                <div id="logo_frame">
+                  <img id="app_icon" src="img/app_icon_v2.png"/>
+                  <p id="main_logo" >ARバムめーかー</p>
+                </div>
+                <p id="main_explane">自分だけのアルバムをつくろう！</p>
+                <p><Link to="/about"><button id="start_button" className="start-button"><a>今すぐはじめる</a></button></Link></p>
               </div>
-              <p id="main_explane">自分だけのアルバムをつくろう！</p>
-              <p><Link to="/about"><button id="start_button" className="start-button"><a>今すぐはじめる</a></button></Link></p>
-              {/* <p><Link to="/marker">ARマーカー生成（Debug）</Link></p>
-              <p><Link to={"/reader"} >readerへ移動する</Link></p> */}
-            </div>
-            <div id="ctachfrase_box">
-              <p id="catchfrase">思い出を、声で、映像で。</p>
-              <p id="catch_ex_1">紙のアルバムには収まりきらない仲間との思い出を映像で記録します。</p>
-              <p id="catch_ex_2">スマホをかざせば、いつでもそこには当時の姿が。</p>
+              <div id="ctachfrase_box">
+                <p id="catchfrase">思い出を、声で、映像で。</p>
+                <p id="catch_ex_1">紙のアルバムには収まりきらない仲間との思い出を映像で記録します。</p>
+                <p id="catch_ex_2">スマホをかざせば、いつでもそこには当時の姿が。</p>
+              </div>
             </div>
             <div id="demo_box">
               <div id="demo_img_box">
                 <img id="demo_img" src="img/app_icon_v2.png"/>
               </div>
-              <p id="demo1_title">面倒な管理が一切不要</p>
-              <p id="demo1_ex">必要な物は、アルバムとスマホだけ。</p>
-              <p id="demo2_title">先輩や同期への寄せ書きとして</p>
-              <p id="demo2_ex">直接では伝えづらいことも</p>
-              <p id="demo2_ex2">映像にに声を乗せて永久に保存できます</p>
-              <p id="demo3_title">一押しの映像をアルバムと共に</p>
-              <p id="demo3_ex">印象に残っている映像をいつでも再生できます</p>
-              <p id="demo3_ex2">アルバムが保存される限り、なくなることはありません</p>
+              <div id="demo-string-box">
+                <p id="use-ex">使用例</p>
+                <p id="demo1_title">面倒な管理が一切不要</p>
+                <p id="demo1_ex">必要な物は、アルバムとスマホだけ。</p>
+                <p id="demo2_title">先輩や同期への寄せ書きとして</p>
+                <p id="demo2_ex">直接では伝えづらいことも</p>
+                <p id="demo2_ex2">映像にに声を乗せて永久に保存できます</p>
+                <p id="demo3_title">一押しの映像をアルバムと共に</p>
+                <p id="demo3_ex">印象に残っている映像をいつでも再生できます</p>
+                <p id="demo3_ex2">アルバムが保存される限り、なくなることはありません</p>
+              </div>
             </div>
             <div id="center_ex">
               <p id="center_ex1">卒業アルバムなどに作成したARマーカ―を添付し</p>
               <p id="center_ex2">専用のwebページで読み込むことで投稿した動画を視聴することができます。</p>
+              <p id="center_ex3">専用のwebページで読み込むことで</p>
+              <p id="center_ex4">投稿した動画を視聴することができます。</p>
             </div>
             <div id="how_to_use">
               <img id="step1-2-arrow" src="img/arrow.png"/>
