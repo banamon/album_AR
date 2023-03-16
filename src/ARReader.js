@@ -5,11 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { ref, getStorage, getDownloadURL } from "firebase/storage";
 import { Cursor } from "react-aframe-ar/dist/primitives";
 import { Button } from "@mui/material";
-// import { AFRAME } from "aframe-ar";
-// import AFRAME from "aframe";
-// import arjs from "ar.js";
-// import "ar.js";
-// import { ARCanvas, ARMarker } from "react-three-arjs"
+
 
 const ARComponent = () => {
   const [loading, setLoading] = useState(false);
@@ -17,17 +13,14 @@ const ARComponent = () => {
 
   const storage = getStorage();
   
-    // id取得
-  // let url = new URL(window.location.href);
-  // let params = url.searchParams;
-  // var user_id = params.get("user_id");
-  var user_id = "TzxJ9ox39PmW84TgS19x";
+  // id取得
+  let url = new URL(window.location.href);
+  let params = url.searchParams;
+  var user_id = params.get("user_id");
+  // var user_id = "TzxJ9ox39PmW84TgS19x";
   // var user_id = "nyV1lobqqwnu8GFkwiSI";
   console.log("uid取得:" + user_id);
 
-  // var moviefile_path =
-  // "https://firebasestorage.googleapis.com/v0/b/test-arbum.appspot.com/o/TzxJ9ox39PmW84TgS19x%2FDebug_sax.mp4?alt=media&token=15f967f7-cae9-48d2-bf1b-a5b46cce5481";
-  // https://firebasestorage.googleapis.com/v0/b/test-arbum.appspot.com/o/TzxJ9ox39PmW84TgS19x%2FDebug_sax.mp4?alt=media&token=15f967f7-cae9-48d2-bf1b-a5b46cce5481
   // 動画path（デフォルトを用意）
   const [moviefile_path, setMoviePath] = useState(
     process.env.PUBLIC_URL + "/testsrc/Debug.mp4"
@@ -40,10 +33,6 @@ const ARComponent = () => {
     process.env.PUBLIC_URL + "/testsrc/hiro.jpg"
   );
   const text = "Hello World";
-
-  // DB取得予定
-  const moveurl = user_id + "/Debug_sax.mp4";
-  const patturl = user_id + "/ARmarker.patt";
 
   // 最初のみデータの取得
   if(!loading){
@@ -67,8 +56,9 @@ const ARComponent = () => {
     const url_textimg = await getDownloadURL(FirestoreRef_textimg)
 
     //  パターンファイルの取得
-    const FirestoreRef_pattarn = ref(storage, paths.marker_path);
-    const url_pattarn = await getDownloadURL(FirestoreRef_pattarn)
+    // const FirestoreRef_pattarn = ref(storage, paths.marker_path);
+    // const url_pattarn = await getDownloadURL(FirestoreRef_pattarn)
+    const url_pattarn = process.env.PUBLIC_URL + "/defaultAR/pattern-"+paths.marker_id+".patt"
 
     setMoviePath(url_movie)
     setPattaernPath(url_pattarn)
@@ -82,9 +72,10 @@ const ARComponent = () => {
   async function GetDB(user_id){
     var paths = {};
     const Doc = await getDoc(doc(firebase.db, "arbum_data", user_id));
-    paths.movie_path = Doc.data().movie_path;;
-    paths.marker_path = Doc.data().marker_pattern_path;
+    paths.movie_path = Doc.data().movie_path;
+    // paths.marker_path = Doc.data().marker_pattern_path;
     paths.text_img_path = Doc.data().text_img_path;
+    paths.marker_id = Doc.data().marker_id;
     return paths
   }
 
@@ -116,16 +107,14 @@ const ARComponent = () => {
         <a-assets timeout="600000">
           <video id="video" src={moviefile_path} preload="auto"></video>
           <img id="textimg" src={textimgfile_path}></img>
-
         </a-assets>
-        {/* <a-marker
-          // markerFound = {RecognizeMarker}
+        <a-marker
           type="pattern"
           url={markerpatternfile_path}
           marker
           id="marker"
-        > */}
-          <a-marker preset="hiro" marker id="marker">
+        >
+          {/* <a-marker preset="hiro" marker id="marker"> */}
           <a-video
             id="a_video"
             src="#video"
