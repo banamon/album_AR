@@ -21,8 +21,8 @@ const ARComponent = () => {
   // let url = new URL(window.location.href);
   // let params = url.searchParams;
   // var user_id = params.get("user_id");
-  // var user_id = "TzxJ9ox39PmW84TgS19x";
-  var user_id = "nyV1lobqqwnu8GFkwiSI";
+  var user_id = "TzxJ9ox39PmW84TgS19x";
+  // var user_id = "nyV1lobqqwnu8GFkwiSI";
   console.log("uid取得:" + user_id);
 
   // var moviefile_path =
@@ -118,42 +118,28 @@ const ARComponent = () => {
           <img id="textimg" src={textimgfile_path}></img>
 
         </a-assets>
-        <a-marker
+        {/* <a-marker
           // markerFound = {RecognizeMarker}
           type="pattern"
           url={markerpatternfile_path}
           marker
           id="marker"
-        >
-          {/* <a-marker preset="hiro" marker id="marker"> */}
+        > */}
+          <a-marker preset="hiro" marker id="marker">
           <a-video
             id="a_video"
             src="#video"
             width="4.6"
             height="4.6"
-            position="0 0 -1"
+            position="0 0 0"
             rotation="0 0 0"
           ></a-video>
-          <a-image id="a_textimg" src="#textimg" position="0 4 0" scale="3 3 3"></a-image>
+          <a-image id="a_textimg" src="#textimg" position="0 3 0" scale="3 3 3"></a-image>
         </a-marker>
         <a-camera></a-camera>
       </a-scene>
     );
   };
-
-  const Debug_View_text = () =>{
-    console.log("Debug_View_text");
-    return (
-      <a-scene>
-      {/* <a-scene vr-mode-ui="enabled: true" style="position:fixed;top:0;"> */}
-      <a-box position="0 1.5 -8" rotation="0 0 0" color="#4CC3D9"></a-box>
-
-      {/* <a-plane position="-1.5 2 -1" width="2" height="0.5" material="shader:html;target: #target1;"></a-plane> */}
-  
-      <a-entity mb-text position="0 1.5 -2" data-text="さんぷる"></a-entity>
-    </a-scene>
-    )
-  }
 
   return (
     <>
