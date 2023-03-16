@@ -1,0 +1,228 @@
+nav {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  top: -0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 90px;
+  background-color: #FF8383;
+  z-index: 19;
+}
+
+.logo {
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: 'Senobi Gothic';
+  font-style: normal;
+  width: 300px;
+}
+
+#logo-img {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 38%;
+  transition: all 0.5s ease-in-out;
+  z-index: 20;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: gray;
+  margin: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-active {
+  transform: translateX(0%) !important;
+  z-index: 20;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    overflow: hidden;
+    /* overflow: scroll; */
+  }
+  .nav-links {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background-color: #FF8383;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+}
+
+@keyframes navlinksFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transition: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(405deg) translate(-5px, -6px);
+}
+
+#step3-progress {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 150px;
+}
+
+#makemarker-screen {
+  position: absolute;
+  width: 100%;
+  height: 900px;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* padding: 276px; */
+  background: #FFDDDD;
+  box-sizing: border-box;
+}
+
+#makemarker-ex {
+  position: relative;
+  top: 250px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 72px;
+  background: #FFDDDD;
+}
+
+#makemarker-ex1 {
+	position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 100px;
+  top: 50px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#makemarker-ex2 {
+  position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 100px;
+  top: 80px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#marker-contents {
+  position: relative;
+  top: 300px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 72px;
+  background: #FFDDDD;
+}
+
+#next-makemarker {
+	box-sizing: border-box;
+  position: absolute;
+  width: 160px;
+  height: 40px;
+  left: 225px;
+  top: 270px;
+  background: #FFFFFF;
+	border: 1px solid #000000;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#next-makemarker a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 39px;
+  text-align: center;
+  color: #000000;
+}
+
+#next-makemarker:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
