@@ -27,9 +27,9 @@ const MovieUploader = () => {
   const [DefaultARvalue, setDefaultAR] = React.useState(DefaultAROption[0])
 
   // idの取得
-  const { state } = useLocation();
-  const user_id = state.user_id;
-  // const user_id = "TzxJ9ox39PmW84TgS19x";
+  // const { state } = useLocation();
+  // const user_id = state.user_id;
+  const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const [loading, setLoading] = useState(false);
@@ -49,31 +49,15 @@ const MovieUploader = () => {
   // 卒アルQR
   var qr_path = "https://test-arbum.web.app/reader?user_id=" + user_id;
 
-  // 画像アップロード
-  const UploadinnerImage = (e) => {
-    console.log("画像Upload");
-    var file = e.target.files[0];
-    imageName = file.name;
-    imageName = imageName.substring(0, imageName.lastIndexOf(".")) || imageName;
-
-    var reader = new FileReader();
-    reader.onload = function (event) {
-      innerImageURL = event.target.result;
-
-      // ARマーカ作成
-      updateFullMarkerImage();
-    };
-    reader.readAsDataURL(file);
-  };
-
   // DBにARマーカーの情報を格納
   const updateDB_ARmarker = async () => {
     // DB登録
-    console.log("DB保存開始");
+    console.log("DB保存開始 marker_id" + DefaultARvalue);
     try {
       const userRef = await updateDoc(doc(firebase.db, "arbum_data", user_id), {
-        marker_img_path: strageFilePath_ARmarker_img,
-        marker_pattern_path: strageFilePath_ARmarker_pattern,
+        // marker_img_path: strageFilePath_ARmarker_img,
+        // marker_pattern_path: strageFilePath_ARmarker_pattern,
+        marker_id: DefaultARvalue
       });
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -81,74 +65,15 @@ const MovieUploader = () => {
   };
 
   // ARマーカー作成
-  const updateFullMarkerImage = async () => {
-    console.log("updateFullMarkerImage : ARマーカの生成");
-    // get patternRatio とりあえずテキトーに設定・自由に変更できるようにしてもいいね
-    var patternRatio = 0.6;
-    var imageSize = 512;
-    var borderColor = "black";
 
-    THREEx.ArPatternFile.buildFullMarker(
-      innerImageURL,
-      patternRatio,
-      imageSize,
-      borderColor,
-      function onComplete(markerUrl) {
-        fullMarkerURL = markerUrl;
+  
 
-        var fullMarkerImage = document.createElement("img");
-        fullMarkerImage.src = fullMarkerURL;
-
-        // put fullMarkerImage into #imageContainer
-        var container = document.querySelector("#imageContainer");
-        while (container.firstChild)
-          container.removeChild(container.firstChild);
-        container.appendChild(fullMarkerImage);
-
-        console.log("ARマーカー作成完了");
-
-        // ストレージへ保存⇒あとで関数化
-        strageFilePath_ARmarker_img = user_id + "/" + "ARmarker.png";
-        const storageRef = ref(firebase.storage, strageFilePath_ARmarker_img);
-        uploadString(storageRef, fullMarkerURL, "data_url").then((snapshot) => {
-          console.log("ARマーカストレージ保存完了");
-        });
-
-        // パターンファイル作成開始
-        OutPutPattarnFile();
-      }
-    );
-  };
-
-  // ARマーカパターンファイル出力
-  const OutPutPattarnFile = () => {
-    console.log("ppatファイル作成開始");
-    THREEx.ArPatternFile.encodeImageURL(
-      innerImageURL,
-      function onComplete(patternFileString) {
-        const blob = new Blob([patternFileString], { type: "text/plain" });
-
-        // ストレージへ保存⇒あとで関数化
-        strageFilePath_ARmarker_pattern = user_id + "/" + "ARmarker.patt";
-        const storageRef = ref(
-          firebase.storage,
-          strageFilePath_ARmarker_pattern
-        );
-
-        // 'file' comes from the Blob or File API
-        uploadBytes(storageRef, blob).then((snapshot) => {
-          console.log("Uploaded a blob or file!");
-        });
-
-        // DB保存
-        updateDB_ARmarker();
-      }
-    );
-  };
-
-  const FinishMakeMarker = () => {
-    // ARmarker画像出力
+  const FinishMakeMarker = async() => {
+    // DB格納
+    await updateDB_ARmarker();
+    // ARマーカ画像出力
     OutPutMakerImage();
+
     // ページ遷移orQR生成
     setUploaded(true);
   };
@@ -156,7 +81,7 @@ const MovieUploader = () => {
   // ARマーカ画像出力
   const OutPutMakerImage = () => {
     var domElement = window.document.createElement("a");
-    domElement.href = fullMarkerURL;
+    domElement.href = process.env.PUBLIC_URL + "/defaultAR/pattern-"+DefaultARvalue+".png";
     domElement.download = "pattern-" + (imageName || "marker") + ".png";
     document.body.appendChild(domElement);
     domElement.click();
@@ -186,13 +111,6 @@ const MovieUploader = () => {
         border:'none'
       }
     }
-  }
-
-  const CreateARMaeker = () =>{
-    console.log("最終選択:" + DefaultARvalue);
-    innerImageURL = process.env.PUBLIC_URL + "/testsrc/defaultAR/"+DefaultARvalue+".png"
-    updateFullMarkerImage();
-    FinishMakeMarker();
   }
 
   // ラジオボタンの値がチェンジされた時
@@ -274,15 +192,15 @@ const MovieUploader = () => {
                 {DefaultAROption.map(i => (
                   <label for={"Default_" + i}>
                     <input type="radio" name="DefaultAR" value={i} id={"Default_" + i} style={noradio} onChange={handleChange} checked={i === DefaultARvalue}/>
-                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/"+i+".png"} with="200" height="200" style={checkDefaultARmakerstyle(i)}/> 
+                  <img src={process.env.PUBLIC_URL + "/defaultAR/pattern-"+i+".png"} with="200" height="200" style={checkDefaultARmakerstyle(i)}/> 
                   </label>
                   ))
                 }
-                <Button variant="contained" onClick={CreateARMaeker}>
+                {/* <Button variant="contained" onClick={CreateARMaeker}>
                   ARマーカ作成
-                </Button>
+                </Button> */}
                 <Button variant="contained" onClick={FinishMakeMarker}>
-                  ARマーカ作成を完了する
+                  決定
                 </Button>
               </div>
 
