@@ -87,6 +87,8 @@ const Home = () => {
               <div id="ctachfrase_box">
                 <p id="catchfrase">思い出を、声で、映像で。</p>
                 <p id="catch_ex_1">紙のアルバムには収まりきらない仲間との思い出を映像で記録します。</p>
+                <p id="catch_ex_1-1">紙のアルバムには収まりきらない</p>
+                <p id="catch_ex_1-2">仲間との思い出を映像で記録します。</p>
                 <p id="catch_ex_2">スマホをかざせば、いつでもそこには当時の姿が。</p>
               </div>
             </div>
@@ -145,7 +147,7 @@ const Home = () => {
                 <img id="step3_img" src="img/step3.png"/>
               </div>
               <div id="step4_box">
-                <p id="step4_title">Step4：QRコードのダウンロード</p>
+                <p id="step4_title">Step4：QRコードの共有</p>
                 <p id="step4_ex1">ARマーカーを読み取るための</p>
                 <p id="step4_ex2">専用のウェブサイトにつながる</p>
                 <p id="step4_ex2-2">QRコードをつくります</p>
