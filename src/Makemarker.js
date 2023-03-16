@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import ImageLogo from "./movie.svg";
-import "./MovieUpload.css";
+import "./Makemarker.css";
 
 // QR関係
 // import { useQRCode } from 'react-qrcodes';
@@ -202,6 +202,28 @@ const MovieUploader = () => {
     setDefaultAR(e.target.value);
   };
 
+  window.onload = function(){
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navLinks = document.querySelectorAll(".nav-links li");
+
+    console.log(navLinks)
+
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("nav-active");
+
+      navLinks.forEach((link, index) => {
+        if(link.style.animation) {
+          link.style.animation = "";
+        } else {
+          link.style.animation = `navlinksFade 0.5s ease forwards ${index / 7+0.4}s`;
+          console.log("index", index);
+        }
+      });
+      burger.classList.toggle("toggle");
+    });
+  }
+
   return (
     <>
       {loading ? (
@@ -224,14 +246,32 @@ const MovieUploader = () => {
               </div>
             </>
           ) : (
-            <div className="outerBox">
-              <div className="title">
-                <h2>ARマーカ作成</h2>
-                <p>画像アップロード</p>
-              </div>
+            <div id="makemarker-screen">
+              <nav>
+                <div className="logo">
+                  <img id="logo-img" src="img/app_icon_v2.png"/>
+                  <h4 id="nav_title">ARバムめーかー</h4>
+                </div>
+                <ul className="nav-links">
+                  <li><a href="#center_ex2">動画投稿</a></li>
+                  <li><a href="#step1_ex4">文字投稿</a></li>
+                  <li><a href="#step2_ex4">マーカー作成</a></li>
+                  <li><a href="#step5_ex4">使い方</a></li>
+                </ul>
+                <div className="burger">
+                  <div className="line1"></div>
+                  <div className="line2"></div>
+                  <div className="line3"></div>
+                </div>
+              </nav>
+              <img id="step3-progress" src="img/step3-progress.png"/>
               {/* DefaltARマーカ */}
               {/* 今後増やすことも考えたら配列で定義してfor文で書きたいね */}
-              <div>
+              <div id="makemarker-ex">
+                <p id="makemarker-ex1">使用するARマーカーを</p>
+                <p id="makemarker-ex2">選んでください</p>
+              </div>
+              <div id="marker-contents">
                 <label for="Default_A">
                   <input type="radio" name="DefaultAR" value="A" id="Default_A" style={noradio} onChange={handleChange} checked={"A" === DefaultARvalue}/>
                   <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/A.png"} with="40" height="40" style={checkDefaultARmakerstyle("A")}/> 
@@ -244,56 +284,32 @@ const MovieUploader = () => {
                   <input type="radio" name="DefaultAR" value="C" id="Default_C" style={noradio} onChange={handleChange} checked={"C" === DefaultARvalue}/>
                   <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/C.png"} with="40" height="40" style={checkDefaultARmakerstyle("C")}/> 
                 </label>
+                <label for="Default_D">
+                  <input type="radio" name="DefaultAR" value="D" id="Default_D" style={noradio} onChange={handleChange} checked={"D" === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/C.png"} with="40" height="40" style={checkDefaultARmakerstyle("D")}/> 
+                </label>
+                <label for="Default_E">
+                  <input type="radio" name="DefaultAR" value="E" id="Default_E" style={noradio} onChange={handleChange} checked={"E" === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/C.png"} with="40" height="40" style={checkDefaultARmakerstyle("E")}/> 
+                </label>
+                <label for="Default_F">
+                  <input type="radio" name="DefaultAR" value="F" id="Default_F" style={noradio} onChange={handleChange} checked={"F" === DefaultARvalue}/>
+                  <img src={process.env.PUBLIC_URL + "/testsrc/defaultAR/C.png"} with="40" height="40" style={checkDefaultARmakerstyle("F")}/> 
+                </label>
+                <Button variant="contained" onClick={CreateARMaeker}>
+                  ARマーカ作成
+                </Button>
+                <Button variant="contained" onClick={FinishMakeMarker}>
+                  ARマーカ作成を完了する
+                </Button>
               </div>
-              <Button variant="contained" onClick={CreateARMaeker}>
-                ARマーカ作成
-              </Button>
-              
-
-
-              <div className="movieUplodeBox">
-                <div className="movieLogoAndText">
-                  <img src={ImageLogo} alt="imagelogo" />
-                  <p>ここにドラッグ＆ドロップしてください</p>
-                </div>
-                <input
-                  className="movieUploadInput"
-                  multiple
-                  name="movieURL"
-                  type="file"
-                  accept="image/*,.png,.jpg,.jpeg,.gif"
-                  onChange={UploadinnerImage}
-                />
-              </div>
-              <p>または</p>
-              <Button variant="contained">
-                ファイルを選択
-                <input
-                  className="movieUploadInput"
-                  type="file"
-                  onChange={UploadinnerImage}
-                  accept="image/*,.png,.jpg,.jpeg,.gif"
-                />
-              </Button>
-
-              {/* <Button variant="contained" onClick={OutPutPattarnFile}>
-                ARマーカ pattファイル出力
-              </Button> */}
-              <Button variant="contained" onClick={FinishMakeMarker}>
-                ARマーカ作成を完了する
-              </Button>
 
               {/* ARマーカのプレビュー表示 */}
-              <div id="imageContainer"></div>
-              {/* <img id="qr-code" src="qr-code.png" alt="qr-code" className="qr-code"/> */}
-              {/* <QRCodeSVG value="https://reactjs.org/" /> */}
-              <input id="patternRation" className="mdl-silder" type="range" min="10" max="90" value="50" tabIndex="0">
-              </input>
-
+              {/* <div id="imageContainer"></div> */}
             </div>
-          )}
+          )};
         </>
-      )}
+      )};
     </>
   );
 };
