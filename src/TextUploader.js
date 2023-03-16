@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import firebase from "./firebase";
 import {updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes,uploadString} from "firebase/storage";
+import "./TextUploader.css";
 // ページ遷移
 import { Link, useLocation } from "react-router-dom";
 // import {useNavigate} from "react-router-dom"
@@ -86,16 +87,58 @@ function TextUploader() {
     });
   }
 
+  window.onload = function(){
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navLinks = document.querySelectorAll(".nav-links li");
+
+    console.log(navLinks)
+
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("nav-active");
+
+      navLinks.forEach((link, index) => {
+        if(link.style.animation) {
+          link.style.animation = "";
+        } else {
+          link.style.animation = `navlinksFade 0.5s ease forwards ${index / 7+0.4}s`;
+          console.log("index", index);
+        }
+      });
+      burger.classList.toggle("toggle");
+    });
+  }
+
   return (
-    <div>
-      <p>テキスト投稿</p>
-      {/* <p>{text}</p> */}
-      <p><canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas></p>
-      <input type="text" value={text} onChange={(e) => InputText(e.target.value)}/>
-      <Button onClick={MakeImgText}>
-      <Link to={"/marker"} state={{ user_id }}>決定</Link>
-        
+    <div id="text-screen">
+      <nav>
+        <div className="logo">
+          <img id="logo-img" src="img/app_icon_v2.png"/>
+          <h4 id="nav_title">ARバムめーかー</h4>
+        </div>
+        <ul className="nav-links">
+          <li><a href="#center_ex2">動画投稿</a></li>
+          <li><a href="#step1_ex4">文字投稿</a></li>
+          <li><a href="#step2_ex4">マーカー作成</a></li>
+          <li><a href="#step5_ex4">使い方</a></li>
+        </ul>
+        <div className="burger">
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+      </nav>
+      <img id="step2-progress" src="img/step2-progress.png"/>
+      <div id="text-contents">
+        <p id="text-ex1">表示させたい</p>
+        <p id="text-ex2">文字を入力してください</p>
+        {/* <p>{text}</p> */}
+        <p><canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas></p>
+        <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)}/>
+        <Button onClick={MakeImgText} id="next-makemarker">
+          <Link to="/marker" state={{ user_id }}><a>決定して次へ</a></Link>
         </Button>
+      </div>
     </div>
   );
 }
