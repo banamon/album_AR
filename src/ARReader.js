@@ -85,10 +85,10 @@ const ARComponent = () => {
     );
   };
 
-  const RemoveBack=()=>{
-    const ReaderBackDiv = document.getElementById("ReaderBack");
-    ReaderBackDiv.style.backgroundColor = `transparent `;
-  }
+  // const RemoveBack=()=>{
+  //   const ReaderBackDiv = document.getElementById("ReaderBack");
+  //   ReaderBackDiv.style.backgroundColor = `transparent `;
+  // }
 
   useEffect(() => {
     console.log("useEffect呼び出し");
