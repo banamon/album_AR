@@ -122,10 +122,17 @@ nav {
   top: 150px;
 }
 
+#step4-progress {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  top: 150px;
+}
+
 #makemarker-screen {
   position: absolute;
   width: 100%;
-  height: 900px;
+  height: 1200px;
   display: flex;
   /* justify-content: center; */
   text-align: center;
@@ -139,7 +146,7 @@ nav {
 
 #makemarker-ex {
   position: relative;
-  top: 250px;
+  top: 280px;
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -148,7 +155,8 @@ nav {
   text-align: center;
   border: none;
   padding: 72px;
-  background: #FFDDDD;
+  /* background: #FFDDDD; */
+	background-color: rgba(0, 0, 0, 0);
 }
 
 #makemarker-ex1 {
@@ -187,7 +195,42 @@ nav {
 
 #marker-contents {
   position: relative;
-  top: 300px;
+  top: 230px;
+  width: 80%;
+  display: flex;
+	flex-wrap: wrap;
+	margin : 3px;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  border: none;
+  padding: 72px;
+  background: #FFDDDD;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.marker {
+	/* position: absolute;
+	top: 50px;
+	left: 10px; */
+	width: 240px;
+	height: 240px;
+	margin : 10px;
+	border: 5px dashed #000000;
+}
+
+.marker:hover {
+	opacity: 0.8;
+	color: #000000;
+	/* background: #FF8383;
+	padding: 2px 4px;
+	color: white; */
+}
+
+#buttons {
+	position: relative;
+  top: 150px;
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -196,23 +239,24 @@ nav {
   text-align: center;
   border: none;
   padding: 72px;
-  background: #FFDDDD;
+  /* background: #FFDDDD; */
+	background-color: rgba(0, 0, 0, 0);
 }
 
-#next-makemarker {
+#next {
 	box-sizing: border-box;
   position: absolute;
   width: 160px;
   height: 40px;
   left: 225px;
-  top: 270px;
+  top: 50px;
   background: #FFFFFF;
-	border: 1px solid #000000;
+	border: 0.5px solid #000000;
   border-radius: 10px;
   text-align: center;
 }
 
-#next-makemarker a {
+#next a {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
@@ -222,7 +266,216 @@ nav {
   color: #000000;
 }
 
-#next-makemarker:hover {
+#next:hover {
   background-color: #FFFFFF;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+#qr-screen {
+  position: absolute;
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+
+  /* padding: 276px; */
+  background: #FFDDDD;
+  box-sizing: border-box;
+}
+
+.result {
+	position: relative;
+  top: 340px;
+  width: 600px;
+	height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 72px;
+  background: #ffffff;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#result-string {
+	position: absolute;
+  width: 400px;
+  height: 110px;
+  left: 100px;
+  top: 0px;
+	background-color: aquamarine;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#upload-comp {
+	position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 0px;
+  top: 0px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#upload-ex1 {
+	position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 0px;
+  top: 50px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#upload-ex2 {
+	position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 0px;
+  top: 70px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#upload-ex3 {
+	position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 0px;
+  top: 90px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#QR-box {
+	position: absolute;
+  width: 300px;
+  height: 370px;
+  left: 150px;
+  top: 130px;
+	border-radius: 10px;
+  box-shadow: 0px 0px 8px gray;
+  color: gray;
+  background: #F5F5F5;
+	/* background-color: rgba(0, 0, 0, 0); */
+}
+
+#qr-view {
+	position: absolute;
+  width: 400px;
+  height: 25px;
+  left: -50px;
+  top: 10px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
+#code-area {
+	position: absolute;
+	width: 180px;
+	height: 180px;
+	left: 60px;
+	top: 50px;
+	background-color: #FFFFFF;
+	border: 2px dashed #000000;
+}
+
+#canvas_qr {
+	position: absolute;
+	width: 50px;
+	left: 25px;
+	top: 25px;
+}
+
+#qr-dl {
+	box-sizing: border-box;
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  left: 100px;
+  top: 270px;
+  background: #FFFFFF;
+	border: 0.5px solid #000000;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#qr-dl a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 39px;
+  text-align: center;
+  color: #000000;
+}
+
+#qr-dl:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+
+#access {
+	position: absolute;
+  width: 200px;
+  height: 40px;
+  left: 50px;
+  top: 315px;
+}
+
+
+#buttons {
+	position: relative;
+  top: 150px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  padding: 72px;
+  /* background: #FFDDDD; */
+	background-color: rgba(0, 0, 0, 0);
 }
