@@ -1,10 +1,13 @@
+* {
+  box-sizing: border-box;
+}
 :root {
   background-color: #FFDDDD;
 }
 
 header {
   position: absolute;
-  width: 100%;
+  width: 100vh;
   height: 158px;
   left: 0px;
   top: 0px;
@@ -17,7 +20,7 @@ nav {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
+  width: 100vh;
   top: -0;
   display: flex;
   justify-content: space-around;
@@ -304,8 +307,8 @@ nav {
   height: 350px;
   left: 500px;
   top: -330px;
-  background-color: #011853;
-  /* background-color: rgba(0, 0, 0, 0); */
+  /* background-color: #011853; */
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #demo1_title {
@@ -1351,6 +1354,9 @@ p {
     overflow-x: hidden;
     /* overflow: scroll; */
   }
+  nav {
+    overflow: hidden;
+  }
   .nav-links {
     position: absolute;
     right: 0;
@@ -1374,6 +1380,7 @@ p {
   }
   #start-screen {
     height: 5000px;
+    overflow-x: hidden;
   }
   #title_box {
     position: relative;
@@ -2548,7 +2555,7 @@ p {
   }
   #page-last {
     position: relative;
-    width: 100%;
+    width: 100vh;
     height: 100px;
     left: 0px;
     top: 245px;
@@ -2563,7 +2570,7 @@ p {
   
   #lets-try {
     /* position: absolute; */
-    width: 700px;
+    width: 300px;
     height: 100px;
     left: 200px;
     top: 0px;
@@ -2580,7 +2587,7 @@ p {
   
   #lets-ex {
     /* position: absolute; */
-    width: 700px;
+    width: 300px;
     height: 100px;
     left: -150px;
     top: 90px;
