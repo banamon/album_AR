@@ -107,6 +107,13 @@ const ARComponent = () => {
         console.log("marker発見");
         videotag.play();
       });
+
+      // マーカーを見失ったイベントの登録
+      marker.addEventListener('markerLost', function () {
+        console.log("marker消失");
+        // マーカー認識が外れたら、、ビデオ停止
+        videotag.pause();
+      });
     }
   });
 
