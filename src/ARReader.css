@@ -1,4 +1,4 @@
-#ReaderBack{
+/* #ReaderBack{
   width: 100vw;
   height: 100vh;
   background-color: #FFDDDD;
@@ -8,6 +8,10 @@
   width: 100vw;
   height: 100vh;
   background-color: #FFDDDD;
+} */
+
+body{
+  background-color: transparent;
 }
 
 .a-loader-title {

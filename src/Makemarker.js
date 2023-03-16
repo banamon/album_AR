@@ -64,10 +64,6 @@ const MovieUploader = () => {
     }
   };
 
-  // ARマーカー作成
-
-  
-
   const FinishMakeMarker = async() => {
     // DB格納
     await updateDB_ARmarker();
