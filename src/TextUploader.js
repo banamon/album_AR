@@ -11,7 +11,7 @@ import { borderRadius } from "@mui/system";
 // import {useNavigate} from "react-router-dom"
 
 function TextUploader() {
-  const [text, setText] = useState("おめでとう！");
+  const [text, setText] = useState("");
   const filename_textimg = "text.png";
   const maxcharnum = 20;
 
@@ -206,24 +206,24 @@ function TextUploader() {
       <div id="text-contents">
         <p id="text-ex1">表示させたい</p>
         <p id="text-ex2">文字を入力してください</p>
-        <p id="text-ex3">({maxcharnum}文字以内)</p>
+        {/* <p id="text-ex3">({maxcharnum}文字以内)</p> */}
         {/* <p>{text}</p> */}
         <p><canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas></p>
-        <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum}/>
-        <p>文字の色</p>
+        <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum} placeholder={maxcharnum + "文字以内"}/>
+        <p /><br />
         {fontcolors.map((colors,index)=>(
-          <label key={index}>
-            {/* <>{console.log(index)}</> */}
-            <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index}/>
-            <div className="coloroptionbox" style={fontcolor_boxstyle(colors)}></div>
-          </label>
+            <label key={index}>
+              <>{console.log("インデックスの中身", index)}</>
+              <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index}/>
+              <div className="coloroptionbox" style={fontcolor_boxstyle(colors)} id={"font-color-" + index}></div>
+            </label>
         ))}
         <Button onClick={MakeImgText} id="next-makemarker">
           <Link to="/marker" state={{ user_id }}><a>決定して次へ</a></Link>
         </Button>
         <Button onClick={NoMakeImgText} id="skip">
           <Link to={"/marker"} state={{ user_id }}>
-            入力をskipする
+            <a>入力をskipする&gt;&gt;</a>
           </Link>
         </Button>
       </div>
