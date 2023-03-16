@@ -139,15 +139,15 @@ const ARComponent = () => {
           <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" model-loader></a-entity>
 
         <a-camera></a-camera>
-        <>
+        {/* <>
         {RemoveBack()}
-        </>
+        </> */}
       </a-scene>
     );
   };
 
   return (
-    <div className="ReaderBack" id="ReaderBack">
+    // <div className="ReaderBack" id="ReaderBack">
     <>
       {!loading ? DebugVIew_Loading() : ViewMoviefromMarker()}
       {/* {ViewMoviefromMarker()} */}
@@ -155,7 +155,7 @@ const ARComponent = () => {
       {/* {ViewMoviefromMarker()} */}
       {/* {DebugVIew_Loading()} */}
     </>
-    </div>
+    // </div>
 
   );
 };
