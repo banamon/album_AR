@@ -22,7 +22,7 @@ const ARComponent = () => {
   // let params = url.searchParams;
   // var user_id = params.get("user_id");
   // var user_id = "TzxJ9ox39PmW84TgS19x";
-  var user_id = "vhhy6lqOnekfDWBLHmmI";
+  var user_id = "nyV1lobqqwnu8GFkwiSI";
   console.log("uid取得:" + user_id);
 
   // var moviefile_path =
@@ -35,6 +35,9 @@ const ARComponent = () => {
   // パターンファイルpath
   const [markerpatternfile_path, setPattaernPath] = useState(
     process.env.PUBLIC_URL + "/testsrc/pattern-Debugmarker.patt"
+  );
+  const [textimgfile_path, setTextimgPath] = useState(
+    process.env.PUBLIC_URL + "/testsrc/hiro.jpg"
   );
   const text = "Hello World";
 
@@ -60,18 +63,17 @@ const ARComponent = () => {
     const url_movie = await getDownloadURL(FirestoreRef_Movie)
 
     // テキスト画像の取得（あとで作成）
+    const FirestoreRef_textimg = ref(storage, paths.text_img_path);
+    const url_textimg = await getDownloadURL(FirestoreRef_textimg)
 
     //  パターンファイルの取得
     const FirestoreRef_pattarn = ref(storage, paths.marker_path);
     const url_pattarn = await getDownloadURL(FirestoreRef_pattarn)
 
-    console.log(url_movie);
     setMoviePath(url_movie)
-    console.log(url_pattarn);
     setPattaernPath(url_pattarn)
+    setTextimgPath(url_textimg)
     console.log("Storage取得完了");
-    console.log(moviefile_path);
-    console.log(markerpatternfile_path);
     
     setLoading(true);
   }
@@ -82,6 +84,7 @@ const ARComponent = () => {
     const Doc = await getDoc(doc(firebase.db, "arbum_data", user_id));
     paths.movie_path = Doc.data().movie_path;;
     paths.marker_path = Doc.data().marker_pattern_path;
+    paths.text_img_path = Doc.data().text_img_path;
     return paths
   }
 
@@ -112,6 +115,8 @@ const ARComponent = () => {
       <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
         <a-assets timeout="600000">
           <video id="video" src={moviefile_path} preload="auto"></video>
+          <img id="textimg" src={textimgfile_path}></img>
+
         </a-assets>
         <a-marker
           // markerFound = {RecognizeMarker}
@@ -126,9 +131,10 @@ const ARComponent = () => {
             src="#video"
             width="4.6"
             height="4.6"
-            position="0 0 0"
+            position="0 0 -1"
             rotation="0 0 0"
           ></a-video>
+          <a-image id="a_textimg" src="#textimg" position="0 4 0" scale="3 3 3"></a-image>
         </a-marker>
         <a-camera></a-camera>
       </a-scene>
