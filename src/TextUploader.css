@@ -185,6 +185,23 @@ nav {
   color: #ff8383;
 }
 
+#text-ex3 {
+  position: absolute;
+  width: 400px;
+  height: 25px;
+  left: 100px;
+  top: 95px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 29px;
+  text-align: center;
+
+  color: #ff8383;
+}
+
 #text-input {
 	position: absolute;
 	width: 300px;
@@ -232,4 +249,51 @@ nav {
 #next-makemarker:hover {
   background-color: #FFFFFF;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+#skip {
+	/* box-sizing: border-box;
+  position: absolute;
+  width: 160px;
+  height: 40px; */
+  left: 90%;
+  top: 150px;
+  /* background: #FFFFFF;
+	border: 1px solid #000000;
+  border-radius: 10px;
+  text-align: center; */
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#skip a {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 39px;
+  text-align: center;
+  color: #000000;
+}
+
+#skip a:hover {
+  color : #FF8383;
+  /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); */
+}
+
+#font-color-0 {
+  position: relative;
+  top: 35px;
+  left: 180px;
+}
+
+#font-color-1 {
+  position: relative;
+  top: 45px;
+  left: 180px;
+}
+
+#font-color-2 {
+  position: relative;
+  top: 55px;
+  left: 180px;
 }

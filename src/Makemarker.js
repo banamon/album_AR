@@ -149,17 +149,41 @@ const MovieUploader = () => {
         <>
           {isUploaded ? (
             <>
-              <QRCodeCanvas id = "canvas_qr" value={qr_path} />,
-                <p>
-                  <Button variant="contained" onClick={DownloadQR}>
-                    QRコードのダウンロード
-                  </Button>
-                </p>
-                <br></br>
-              <div className="result">
-                <h2 id="result">
-                  <p>アップロード完了しました！</p>
-                </h2>
+              <div id="qr-screen">
+                <nav>
+                  <div className="logo">
+                    <img id="logo-img" src="img/app_icon_v2.png"/>
+                    <h4 id="nav_title">ARバムめーかー</h4>
+                  </div>
+                  <ul className="nav-links">
+                    <li><a href="#center_ex2">動画投稿</a></li>
+                    <li><a href="#step1_ex4">文字投稿</a></li>
+                    <li><a href="#step2_ex4">マーカー作成</a></li>
+                    <li><a href="#step5_ex4">使い方</a></li>
+                  </ul>
+                  <div className="burger">
+                    <div className="line1"></div>
+                    <div className="line2"></div>
+                    <div className="line3"></div>
+                  </div>
+                </nav>
+                <img id="step4-progress" src="img/step4-progress.png"/>
+                <div className="result">
+                  <div id="result-string">
+                    <p id="upload-comp">アップロード完了しました！</p>
+                    <p id="upload-ex1">下のQRコードから</p>
+                    <p id="upload-ex2">専用ページにアクセスして</p>
+                    <p id="upload-ex3">動画を見てみよう！</p>
+                  </div>
+                  <div id="QR-box">
+                    <p id="qr-view">閲覧用QRコード</p>
+                    <div id="code-area">
+                      <QRCodeCanvas id = "canvas_qr" value={qr_path} />,
+                    </div>
+                      <Button id="qr-dl" variant="contained" onClick={DownloadQR}><a>共有</a></Button>
+                      <Button id="access" ><a>専用ページにアクセス</a></Button>
+                  </div>
+                </div>
               </div>
             </>
           ) : (
