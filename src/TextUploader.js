@@ -6,12 +6,21 @@ import { updateDoc, doc } from "firebase/firestore";
 import { ref, uploadBytes, uploadString } from "firebase/storage";
 // ページ遷移
 import { Link, useLocation } from "react-router-dom";
+import { borderRadius } from "@mui/system";
 // import {useNavigate} from "react-router-dom"
 
 function TextUploader() {
   const [text, setText] = useState("おめでとう！");
   const filename_textimg = "text.png";
   const maxcharnum = 20;
+
+  const fontcolors = [
+    {fill: `#FF8383`, stroke: `#FFDDDD`},
+    {fill: `#ffffff`, stroke: `#FF8383`},
+    {fill: `#A63A3A`, stroke: `#FFDDDD`},
+  ]
+  const [selectedfontcolors_index, setFontColorindex] = useState(0);
+  console.log(fontcolors);
 
   // user_idの取得
   // const { state } = useLocation();
@@ -36,6 +45,8 @@ function TextUploader() {
 
   const NoMakeImgText = () => {
     // 本当は文字なしの場合の処理書くべきだけど，どうせ透明だしいいかな．．．
+    drawText("");
+
     var canvas = document.getElementById("preview");
     var png = canvas.toDataURL();
     console.log(png);
@@ -47,8 +58,12 @@ function TextUploader() {
   // Canvasに文字を描く
   const drawText = (text) => {
     // デバッグ
-    var fillcolor = "#FFFF00";
-    var strokecolor = "#FF0000	";
+    var fillcolor = fontcolors[selectedfontcolors_index].fill;
+    var strokecolor = fontcolors[selectedfontcolors_index].stroke;
+    // var fillcolor = "#00FFFF";
+    // var strokecolor = "#FF0000	";
+    // var fonts = [ 'serif','Segoe Print', 'san-serif', 'ＭＳ 明朝',"fantasy"];
+    var fonts_index = 1;
 
     var canvas = document.getElementById("preview");
     var ctx = canvas.getContext("2d");
@@ -60,12 +75,21 @@ function TextUploader() {
     var y = canvas.height / 2;
 
     //文字のスタイルを指定
-    ctx.font = "48px bold 'メイリオ'";
+    // ctx.font = "48px bold " + fonts[fonts_index];
+    ctx.font = "bold 48px 'Segoe Print', san-serif";
     ctx.strokeStyle = strokecolor;
-    ctx.lineWidth = "2";
+    ctx.lineWidth = "13";
     ctx.textBaseline = "center";
     ctx.textAlign = "center";
     ctx.strokeText(text, x, y);
+
+    // もう少し太字にした
+    // // ctx.strokeStyle = strokecolor;
+    // ctx.strokeStyle = fillcolor;
+    // ctx.lineWidth = "8";
+    // ctx.textBaseline = "center";
+    // ctx.textAlign = "center";
+    // ctx.strokeText(text, x, y);
     
     //文字のスタイルを指定
     // ctx.font = "48px bold";
@@ -78,6 +102,7 @@ function TextUploader() {
   };
 
   useEffect(() => {
+    // defaultのテキストを描写
     drawText(text);
   })
 
@@ -105,6 +130,39 @@ function TextUploader() {
     });
   };
 
+  const noradio = {
+    display: 'none'
+  };
+
+    // 選択したときのスタイル
+  const checkDefaultARmakerstyle = (value) => {
+    if(value == selectedfontcolors_index){
+      return {
+        border:'3px solid #000'
+      }
+    }else{
+      return {
+        border:'none'
+      }
+    }
+  }
+
+    // ラジオボタンの値がチェンジされた時
+  const handleChange = (e) => {
+    console.log("fontを入れる" + e.target.value);
+    setFontColorindex(e.target.value);
+  };
+
+  const fontcolor_boxstyle = (colors) => {
+    return {
+      width: "30px",
+      height: "30px",
+      background: colors.fill,
+      border: "8px solid " + colors.stroke,
+      borderRadius: "20%"
+    }
+  }
+
   return (
     <div>
       <p>テキスト投稿({maxcharnum}文字以内)</p>
@@ -115,6 +173,16 @@ function TextUploader() {
         onChange={(e) => InputText(e.target.value)}
         maxLength={maxcharnum}
       />
+      <div>
+        <p>文字の色</p>
+        {fontcolors.map((colors,index)=>(
+          <label key={index}>
+            {/* <>{console.log(index)}</> */}
+            <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index}/>
+            <div className="coloroptionbox" style={fontcolor_boxstyle(colors)}></div>
+          </label>
+        ))}
+      </div>
       <Button onClick={MakeImgText}>
         <Link to={"/marker"} state={{ user_id }}>
           決定
