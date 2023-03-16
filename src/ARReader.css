@@ -1,0 +1,21 @@
+#ReaderBack{
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFDDDD;
+}
+
+.Loading{
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFDDDD;
+}
+
+.a-loader-title {
+  display: none;
+  background-color: #FFDDDD;
+  color: #FFDDDD;
+}
+
+.a-canvas{
+  /* display: none; */
+}

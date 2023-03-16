@@ -3,22 +3,20 @@ import React, { useEffect, useState } from "react";
 import firebase from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { ref, getStorage, getDownloadURL } from "firebase/storage";
+import "./ARReader.css"
 import { Cursor } from "react-aframe-ar/dist/primitives";
 import { Button } from "@mui/material";
 
 
 const ARComponent = () => {
   const [loading, setLoading] = useState(false);
-  const [rendered, setRendered] = useState(false);
-
   const storage = getStorage();
   
   // id取得
-  let url = new URL(window.location.href);
-  let params = url.searchParams;
-  var user_id = params.get("user_id");
-  // var user_id = "TzxJ9ox39PmW84TgS19x";
-  // var user_id = "nyV1lobqqwnu8GFkwiSI";
+  // let url = new URL(window.location.href);
+  // let params = url.searchParams;
+  // var user_id = params.get("user_id");
+  var user_id = "N1Kj1B6fkAXt2iK1X7VR";
   console.log("uid取得:" + user_id);
 
   // 動画path（デフォルトを用意）
@@ -81,12 +79,16 @@ const ARComponent = () => {
 
   const DebugVIew_Loading = () => {
     return (
-      <div>
-        <p>ロード中</p>
+      <div className="Loading">
       </div>
 
     );
   };
+
+  const RemoveBack=()=>{
+    const ReaderBackDiv = document.getElementById("ReaderBack");
+    ReaderBackDiv.style.backgroundColor = `transparent `;
+  }
 
   useEffect(() => {
     console.log("useEffect呼び出し");
@@ -98,12 +100,21 @@ const ARComponent = () => {
         console.log("marker発見");
         videotag.play();
       });
+
+      // マーカーを見失ったイベントの登録
+      marker.addEventListener('markerLost', function () {
+        console.log("marker消失");
+        // マーカー認識が外れたら、、ビデオ停止
+        videotag.pause();
+      });
     }
   });
 
   const ViewMoviefromMarker = () => {
     return (
-      <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640">
+      // <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="enabled: false">
+       <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="dotsColor: red; backgroundColor: #FFDDDD">
+      {/* // <a-scene arjs  loading-screen="dotsColor: red; backgroundColor: #FFDDDD"> */}
         <a-assets timeout="600000">
           <video id="video" src={moviefile_path} preload="auto"></video>
           <img id="textimg" src={textimgfile_path}></img>
@@ -120,23 +131,31 @@ const ARComponent = () => {
             src="#video"
             width="4.6"
             height="4.6"
-            position="0 0 0"
+            position="0 0 -3"
             rotation="0 0 0"
           ></a-video>
-          <a-image id="a_textimg" src="#textimg" position="0 3 0" scale="3 3 3"></a-image>
+          <a-image id="a_textimg" src="#textimg" position="0 3 -3" scale="3 3 3"></a-image>
         </a-marker>
+          <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" model-loader></a-entity>
+
         <a-camera></a-camera>
+        <>
+        {RemoveBack()}
+        </>
       </a-scene>
     );
   };
 
   return (
+    <div className="ReaderBack" id="ReaderBack">
     <>
       {!loading ? DebugVIew_Loading() : ViewMoviefromMarker()}
+      {/* {ViewMoviefromMarker()} */}
       {/* {!loading ? (DebugVIew_Loading()):(DebugVIew())} */}
       {/* {ViewMoviefromMarker()} */}
       {/* {DebugVIew_Loading()} */}
     </>
+    </div>
 
   );
 };
