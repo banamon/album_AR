@@ -75,6 +75,13 @@ function TextUploader() {
     //文字のスタイルを指定
     // ctx.font = "48px bold " + fonts[fonts_index];
     ctx.font = "bold 40px 'Segoe Print', san-serif";
+
+    // 黒線の追加
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = "15";
+    ctx.strokeText(text, x, y);
+
+
     ctx.strokeStyle = strokecolor;
     ctx.lineWidth = "13";
     ctx.textBaseline = "center";
@@ -153,11 +160,27 @@ function TextUploader() {
 
   const fontcolor_boxstyle = (colors) => {
     return {
-      width: "30px",
-      height: "30px",
+      width: "40px",
+      height: "40px",
+      // background: colors.fill,
+      border: "1px solid #333",
+      background: colors.stroke,
+      borderRadius: "20%",
+      position: "relative"
+    }
+  }
+
+  const fontcolor_boxstyle_fill = (colors) => {
+    return {
+      width: "20px",
+      height: "20px",
       background: colors.fill,
-      border: "8px solid " + colors.stroke,
-      borderRadius: "20%"
+      borderRadius: "20%",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translateY(-50%) translateX(-50%)",
+      // -webkit-transform: "translateY(-50%) translateX(-50%)"
     }
   }
 
@@ -228,8 +251,10 @@ function TextUploader() {
           {fontcolors.map((colors,index)=>(
               <label key={index}>
                 <>{console.log("インデックスの中身", index)}</>
-                <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index} />
-                <div className="coloroptionbox" style={fontcolor_boxstyle(colors)} id={"font-color-" + index}></div>
+                <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index}/>
+                <div className="coloroptionbox" style={fontcolor_boxstyle(colors)} id={"font-color-" + index}>
+                  <div style={fontcolor_boxstyle_fill(colors)}></div>
+                </div>
               </label>
           ))}
         </div>
