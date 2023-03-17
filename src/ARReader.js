@@ -7,7 +7,6 @@ import "./ARReader.css"
 import { Cursor } from "react-aframe-ar/dist/primitives";
 import { Button } from "@mui/material";
 
-
 const ARComponent = () => {
   const [loading, setLoading] = useState(false);
   const storage = getStorage();

@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState , useRef, useEffect} from "react";
 import ImageLogo from "./movie.svg";
 import "./Makemarker.css";
 
@@ -7,6 +7,8 @@ import "./Makemarker.css";
 // import { useQRCode } from 'react-qrcodes';
 import ReactDOM from 'react-dom';
 import {QRCodeSVG,QRCodeCanvas} from 'qrcode.react';
+import QRCodeStyling from "qr-code-styling";
+
 
 // firebase
 import firebase from "./firebase";
@@ -26,6 +28,8 @@ const MovieUploader = () => {
   const DefaultAROption = [1,2,3,4,5,6];
   const [DefaultARvalue, setDefaultAR] = React.useState(DefaultAROption[0])
 
+  const ref = useRef(null);
+
   // idの取得
   const { state } = useLocation();
   const user_id = state.user_id;
@@ -34,6 +38,7 @@ const MovieUploader = () => {
 
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
+  const [isQR, setQR] = useState(false);
 
   // 送信された画像パス（予定：今は用意したパス）⇒Defaltを準備してもいいかも
   var innerImageURL = `${process.env.PUBLIC_URL}/testsrc/test.jpg`;
@@ -48,6 +53,37 @@ const MovieUploader = () => {
 
   // 卒アルQR
   var qr_path = "https://arbummaker.web.app/reader?user_id=" + user_id;
+  const qrCode = new QRCodeStyling({
+    width: 200,
+    height: 200,
+    type: "canvas",
+    // data: qr_path,
+    image: process.env.PUBLIC_URL + "/img/app_icon_v2.png",
+    dotsOptions: {
+      color: "#FF8383",
+      type: "rounded"
+    },
+    imageOptions: {
+      crossOrigin: "anonymous",
+      margin: 3
+    },
+    qrOptions: {
+      errorCorrectionLevel: 'H'
+    },
+  });
+  // qrCode.append(code_area);
+  useEffect(() => {
+    if(isUploaded){
+      // if(!isQR){
+        console.log("描写");
+        const code_area = document.getElementById("code-area")
+        console.log(code_area);
+        qrCode.update({data: qr_path});
+        qrCode.append(code_area);
+        // setQR(true);
+      // }
+    }
+  });
 
   // DBにARマーカーの情報を格納
   const updateDB_ARmarker = async () => {
@@ -85,11 +121,15 @@ const MovieUploader = () => {
   };
 
   const DownloadQR = () =>{
-    let canvas = document.getElementById("canvas_qr");
-    let link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "qr-code.png";
-    link.click();
+    // let canvas = document.getElementById("code-area").children[0];
+    // console.log(canvas);
+    // // let canvas = document.getElementById("canvas_qr");
+    // let link = document.createElement("a");
+    // link.href = canvas.toDataURL("image/png");
+    // link.download = "qr-code.png";
+    // link.click();
+
+        qrCode.download("png");
   }
 
   const noradio = {
@@ -114,7 +154,7 @@ const MovieUploader = () => {
     setDefaultAR(e.target.value);
   };
 
-    // header処理
+  // header処理
   window.onload = function(){
     const burger = document.querySelector(".burger");
     const nav = document.querySelector(".nav-links");
@@ -187,7 +227,7 @@ const MovieUploader = () => {
                   <div id="QR-box">
                     <p id="qr-view">閲覧用QRコード</p>
                     <div id="code-area">
-                      <QRCodeCanvas id = "canvas_qr" value={qr_path} />,
+                      {/* <QRCodeCanvas id = "canvas_qr" value={qr_path} />, */}
                     </div>
                       <Button id="qr-dl" variant="contained" onClick={DownloadQR}><a>共有</a></Button>
                       <Button id="access" ><Link to={qr_path} ><a>専用ページにアクセス</a></Link></Button>
