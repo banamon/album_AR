@@ -164,6 +164,19 @@ const MovieUploader = () => {
                   </div>
                 </nav>
                 <img id="step4-progress" src="img/step4-progress.png"/>
+                <div id="step-box">
+                  <ul className="progress-arrow">
+                    <li><img src="img/step1-a-fin.png" width="66px" height="72px"/></li>
+                    <li><img src="img/tri-fin.png" width="10px" height="20px"/></li>
+                    <li><img src="img/step2-a-fin.png" width="66px" height="72px"/></li>
+                    <li><img src="img/tri-fin.png" width="10px" height="20px"/></li>
+                    <li><img src="img/step3-a-fin.png" width="66px" height="72px"/></li>
+                    <li><img src="img/tri-fin.png" width="10px" height="20px"/></li>
+                    <li><img src="img/step4-a-now.png" width="66px" height="72px"/></li>
+                    <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                    <li><img src="img/step5-a.png" width="66px" height="72px"/></li>
+                  </ul>
+                </div>
                 <div className="result">
                   <div id="result-string">
                     <p id="upload-comp">アップロード完了しました！</p>
@@ -202,6 +215,19 @@ const MovieUploader = () => {
                 </div>
               </nav>
               <img id="step3-progress" src="img/step3-progress.png"/>
+              <div id="step-box">
+            <ul className="progress-arrow">
+              <li><img src="img/step1-a-fin.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-fin.png" width="10px" height="20px"/></li>
+              <li><img src="img/step2-a-fin.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-fin.png" width="10px" height="20px"/></li>
+              <li><img src="img/step3-a-now.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+              <li><img src="img/step4-a.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+              <li><img src="img/step5-a.png" width="66px" height="72px"/></li>
+            </ul>
+          </div>
               {/* DefaltARマーカ */}
               {/* 今後増やすことも考えたら配列で定義してfor文で書きたいね */}
               <div id="makemarker-ex">

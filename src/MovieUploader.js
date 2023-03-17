@@ -158,6 +158,19 @@ function MovieUploader() {
             </div>
           </nav>
           <img id="step1-progress" src="img/step1-progress.png"/>
+          <div id="step-box">
+            <ul className="progress-arrow">
+              <li><img src="img/step1-a.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+              <li><img src="img/step2-a.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+              <li><img src="img/step3-a.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+              <li><img src="img/step4-a.png" width="66px" height="72px"/></li>
+              <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+              <li><img src="img/step5-a.png" width="66px" height="72px"/></li>
+            </ul>
+          </div>
           <div id="load-contents">
             <p id="nowloading">Now Loading...</p>
             <progress max="100" value="0" id="loading"></progress>
@@ -188,6 +201,19 @@ function MovieUploader() {
                 </div>
               </nav>
               <img id="step1-progress" src="img/step1-progress.png"/>
+              <div id="step-box">
+                <ul className="progress-arrow">
+                  <li><img src="img/step1-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step2-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step3-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step4-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step5-a.png" width="66px" height="72px"/></li>
+                </ul>
+              </div>
               <div id="comp-contents">
                   <p id="comp-en">completed！</p>
                   <p id="comp-jp">アップロード完了しました</p>
@@ -214,6 +240,19 @@ function MovieUploader() {
                 </div>
               </nav>
               <img id="step1-progress" src="img/step1-progress.png"/>
+              <div id="step-box">
+                <ul className="progress-arrow">
+                  <li><img src="img/step1-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step2-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step3-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step4-a.png" width="66px" height="72px"/></li>
+                  <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+                  <li><img src="img/step5-a.png" width="66px" height="72px"/></li>
+                </ul>
+              </div>
               <p id="step1-ex1">表示したい動画を</p>
               <p id="step1-ex2">アップロードしてください</p>
               <div className="outerBox">
@@ -223,7 +262,7 @@ function MovieUploader() {
                 </div>
                 <div className="movieUplodeBox">
                   <div className="movieLogoAndText">
-                    <img src="img/step1.png" alt="imagelogo" />
+                    <img src="img/step1.png" alt="imagelogo" id="movie-img"/>
                     <p>ここにドラッグ＆ドロップしてください</p>
                   </div>
                   <input

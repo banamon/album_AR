@@ -203,6 +203,19 @@ function TextUploader() {
         </div>
       </nav>
       <img id="step2-progress" src="img/step2-progress.png"/>
+      <div id="step-box">
+        <ul className="progress-arrow">
+          <li><img src="img/step1-a-fin.png" width="66px" height="72px"/></li>
+          <li><img src="img/tri-fin.png" width="10px" height="20px"/></li>
+          <li><img src="img/step2-a-now.png" width="66px" height="72px"/></li>
+          <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+          <li><img src="img/step3-a.png" width="66px" height="72px"/></li>
+          <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+          <li><img src="img/step4-a.png" width="66px" height="72px"/></li>
+          <li><img src="img/tri-a.png" width="10px" height="20px"/></li>
+          <li><img src="img/step5-a.png" width="66px" height="72px"/></li>
+        </ul>
+      </div>
       <div id="text-contents">
         <p id="text-ex1">表示させたい</p>
         <p id="text-ex2">文字を入力してください</p>
@@ -210,6 +223,7 @@ function TextUploader() {
         {/* <p>{text}</p> */}
         <canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas>
         <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum} placeholder={maxcharnum + "文字以内"}/>
+        <p id="change-color">&lt;文字色の変更&gt;</p>
         {fontcolors.map((colors,index)=>(
             <label key={index}>
               <>{console.log("インデックスの中身", index)}</>

@@ -1354,9 +1354,9 @@ p {
     overflow-x: hidden;
     /* overflow: scroll; */
   }
-  nav {
+  /* nav {
     overflow: hidden;
-  }
+  } */
   .nav-links {
     position: absolute;
     right: 0;

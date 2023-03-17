@@ -68,36 +68,6 @@ nav {
   z-index: 20;
 }
 
-@media screen and (max-width: 1024px) {
-  .nav-links {
-    width: 55%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .nav {
-    overflow: hidden;
-    /* overflow: scroll; */
-  }
-  .nav-links {
-    position: absolute;
-    right: 0;
-    height: 92vh;
-    top: 8vh;
-    background-color: #FF8383;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
-    transform: translateX(100%);
-  }
-  .nav-links li {
-    opacity: 0;
-  }
-  .burger {
-    display: block;
-  }
-}
-
 @keyframes navlinksFade {
   0% {
     opacity: 0;
@@ -197,6 +167,30 @@ nav {
   width: 80%;
   left: 10%;
   top: 150px;
+}
+
+#step-box {
+  display: none;
+  position: absolute;
+  width: 100%;
+  min-width: 375px;
+  top: 150px;
+}
+
+.progress-arrow {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  width: 98%;
+  /* transition: all 0.5s ease-in-out; */
+  /* z-index: 20; */
+}
+
+.progress-arrow li {
+  list-style: none;
+}
+.progress-arrow  img {
+  text-decoration: none;
 }
 
 #step1-ex1 {
@@ -452,4 +446,349 @@ progress {
 ::-webkit-progress-value {
   background-color: #FF8383;
   border-radius: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-links {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    overflow: hidden;
+    /* overflow: scroll; */
+  }
+  .nav-links {
+    position: absolute;
+    right: 0;
+    height: 92vh;
+    top: 8vh;
+    background-color: #FF8383;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    transform: translateX(100%);
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+  #step1-progress {
+    display: none;
+  }
+  
+  #step-box {
+    display: block;
+  }
+  .outerBox {
+    position: relative;
+    width: 360px;
+    top: calc(0.7*310px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    padding: calc(0.75*36px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px gray;
+    color: gray;
+    background: #F5F5F5;
+  }
+  
+  .outerBox h2 {
+    font-weight: calc(0.75*600);
+    margin-top: calc(0.75*5px);
+  }
+  
+  .movieUplodeBox {
+    border: calc(0.75*2px) dashed #FF8383;
+    padding: calc(0.75*35px) calc(0.75*60px);
+    position: relative;
+  }
+  
+  .movieLogoAndText p {
+    margin-bottom: 0px;
+  }
+  
+  .movieUploadInput {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  #choice-button {
+    box-sizing: border-box;
+    /* position: absolute; */
+    width: calc(0.75*230px);
+    height: calc(0.75*55px);
+    /* left: 883px; */
+    /* top: 1820px; */
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-size: calc(0.75*18px); /* ボタンの文字の大きさ */
+    font-weight: bold;
+    font-family: 'Inter';
+    font-style: normal;
+  }
+  #step1-ex1 {
+    position: relative;
+    width: calc(0.75*300px);
+    height: calc(0.75*60px);
+    left: 0px;
+    top: calc(0.75*320px);
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*800);
+    font-size: calc(0.75*30px);
+    line-height: calc(0.75*77px);
+    text-align: center;
+    
+    color: #FF8383;
+  }
+  
+  #step1-ex2 {
+    position: relative;
+    width: calc(0.75*500px);
+    height: calc(0.75*60px);
+    left: 0px;
+    top: calc(0.75*280px);
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*800);
+    font-size: calc(0.75*30px);
+    line-height: calc(0.75*77px);
+    text-align: center;
+    
+    color: #FF8383;
+  }
+
+  #movie-img {
+    width: 150px;
+  }
+
+  #screen {
+    height: 800px;
+  }
+  
+  #uploaded-screen {
+    position: absolute;
+    width: 100%;
+    height: 900px;
+    display: flex;
+    /* justify-content: center; */
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  
+    /* padding: 276px; */
+    background: #FFDDDD;
+    box-sizing: border-box;
+  }
+  
+  .next-button {
+    background-color: #FFFFFF; /* ボタンの背景色 */
+    border: none; /* ボタンの枠線をなくす */
+    color: 000000; /* ボタンの文字色 */
+    padding: 12px 32px; /* ボタンの内側の余白 */
+    text-align: center; /* ボタンの中央揃え */
+    text-decoration: none; /* ボタンの下線をなくす */
+    display: inline-block; /* ボタンを横に並べる */
+    font-size: calc(0.75*16px); /* ボタンの文字の大きさ */
+    margin: calc(0.75*20px); /* ボタンの余白 */
+    cursor: pointer; /* ボタンのカーソル形状 */
+    border-radius: 4px; /* ボタンの角を丸くする */
+    transition-duration: 0.4s; /* ボタンのホバーエフェクトの時間 */
+  }
+  
+  .next-button:hover {
+    background-color: #4EB4F2; /* ボタンのホバーエフェクト時の背景色 */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  }
+
+  #load-screen {
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    display: flex;
+    /* justify-content: center; */
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  
+    /* padding: 276px; */
+    background: #FFDDDD;
+    box-sizing: border-box;
+  }
+  
+  #load-contents {
+    position: relative;
+    top: calc(0.75*400px);
+    width: calc(0.75*600px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    padding: calc(0.75*72px);
+    background: #FFDDDD;
+  }
+  
+  #nowloading {
+    position: absolute;
+    width: calc(0.75*400px);
+    height: calc(0.75*71px);
+    left: calc(0.75*110px);
+    top: 0px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*700);
+    font-size: calc(0.75*20px);
+    line-height: calc(0.75*48px);
+    text-align: center;
+    
+    color: #676262;
+  }
+  
+  #loading {
+    position: absolute;
+    width: calc(0.55*500px);
+    height: calc(0.75*25px);
+    left: 90px;
+    top: calc(0.75*50px);
+    /* box-sizing: border-box; */
+    border: 2px solid #FF8383;
+  }
+  
+  #percentage {
+    position: absolute;
+    width: calc(0.75*400px);
+    height: calc(0.75*60px);
+    left: calc(0.75*100px);
+    top: calc(0.75*100px);
+  
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*700);
+    font-size: calc(0.75*32px);
+    line-height: calc(0.75*77px);
+    text-align: center;
+  
+    color: #FF8383;
+  }
+  
+  #percent {
+    position: absolute;
+    width: calc(0.75*40px);
+    height: calc(0.75*40px);
+    left: calc(0.75*330px);
+    top: calc(0.75*118px);
+  
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*400);
+    font-size: calc(0.75*20px);
+    line-height: calc(0.75*48px);
+    text-align: center;
+  
+    color: #FF8383;
+  }
+  
+  #comp-contents {
+    position: relative;
+    top: calc(0.75*400px);
+    width: calc(0.75*600px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    padding: calc(0.75*72px);
+    background: #FFDDDD;
+  }
+  
+  #comp-en {
+    position: absolute;
+    width: calc(0.75*400px);
+    height: calc(0.75*25px);
+    left: calc(0.75*100px);
+    top: 0px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*800);
+    font-size: calc(0.75*48px);
+    line-height: calc(0.75*116px);
+    text-align: center;
+    
+    color: #FF8383;
+  }
+  
+  #comp-jp {
+    position: absolute;
+    width: calc(0.75*400px);
+    height: calc(0.75*25px);
+    left: calc(0.75*100px);
+    top: calc(0.75*90px);
+  
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*400);
+    font-size: calc(0.75*14px);
+    line-height: calc(0.75*29px);
+    text-align: center;
+  
+    color: #000000;
+  }
+  
+  .next-litter {
+    position: absolute;
+    width: calc(0.75*220px);
+    height: calc(0.75*55px);
+    left: calc(0.75*190px);
+    top: calc(0.75*180px);
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .next-litter a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: calc(0.75*800);
+    font-size: calc(0.75*17px);
+    line-height: calc(0.75*39px);
+    text-align: center;
+    color: #000000;
+  }
+  
+  .next-litter:hover {
+    background-color: #FFFFFF;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  }
+  
+  progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #FFDDDD;
+    width: calc(0.55*400px);
+    height: calc(0.75*15px);
+    border-radius: calc(0.75*30px);
+  }
 }
