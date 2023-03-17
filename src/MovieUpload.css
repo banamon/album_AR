@@ -181,7 +181,9 @@ nav {
   position: absolute;
   display: flex;
   justify-content: space-around;
-  width: 98%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
   /* transition: all 0.5s ease-in-out; */
   /* z-index: 20; */
 }
@@ -456,10 +458,10 @@ progress {
 }
 
 @media screen and (max-width: 768px) {
-  .nav {
+  /* .nav {
     overflow: hidden;
-    /* overflow: scroll; */
-  }
+    overflow: scroll;
+  } */
   .nav-links {
     position: absolute;
     right: 0;
@@ -486,7 +488,7 @@ progress {
   }
   .outerBox {
     position: relative;
-    width: 360px;
+    width: 340px;
     top: calc(0.7*310px);
     display: flex;
     flex-direction: column;
@@ -561,7 +563,7 @@ progress {
   
   #step1-ex2 {
     position: relative;
-    width: calc(0.75*500px);
+    width: calc(0.75*400px);
     height: calc(0.75*60px);
     left: 0px;
     top: calc(0.75*280px);
@@ -582,7 +584,7 @@ progress {
 
   #screen {
     height: 800px;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
   
   #uploaded-screen {

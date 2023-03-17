@@ -108,7 +108,7 @@ nav {
   position: absolute;
   display: flex;
   justify-content: space-around;
-  width: 98%;
+  width: 100%;
   /* transition: all 0.5s ease-in-out; */
   /* z-index: 20; */
 }
@@ -310,10 +310,10 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
-  .nav {
+  /* .nav {
     overflow: hidden;
-    /* overflow: scroll; */
-  }
+    overflow: scroll; 
+  } */
   .nav-links {
     position: absolute;
     right: 0;
@@ -347,7 +347,7 @@ nav {
     text-align: center;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* padding: 276px; */
     background: #FFDDDD;
     box-sizing: border-box;

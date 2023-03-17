@@ -486,10 +486,10 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
-  .nav {
-    overflow: hidden;
+  /* .nav { */
+    /* overflow: hidden; */
     /* overflow: scroll; */
-  }
+  /* } */
   .nav-links {
     position: absolute;
     right: 0;
@@ -532,11 +532,21 @@ nav {
 		background-color: rgba(0, 0, 0, 0);
 	}
 
+	#result-string {
+		position: absolute;
+		width: 200px;
+		height: 110px;
+		left: 80px;
+		top: 0px;
+		background-color: aquamarine;
+		background-color: rgba(0, 0, 0, 0);
+	}
+
 	#upload-comp {
 		position: absolute;
-		width: 400px;
+		width: 360px;
 		height: 25px;
-		left: -120px;
+		left: -80px;
 		top: -60px;
 	
 		font-family: 'Inter';
@@ -551,9 +561,9 @@ nav {
 	
 	#upload-ex1 {
 		position: absolute;
-		width: 400px;
+		width: 360px;
 		height: 25px;
-		left: -120px;
+		left: -80px;
 		top: 0px;
 	
 		font-family: 'Inter';
@@ -568,9 +578,9 @@ nav {
 	
 	#upload-ex2 {
 		position: absolute;
-		width: 400px;
+		width: 360px;
 		height: 25px;
-		left: -120px;
+		left: -80px;
 		top: 20px;
 	
 		font-family: 'Inter';
@@ -585,9 +595,9 @@ nav {
 	
 	#upload-ex3 {
 		position: absolute;
-		width: 400px;
+		width: 360px;
 		height: 25px;
-		left: -120px;
+		left: -80px;
 		top: 40px;
 	
 		font-family: 'Inter';
@@ -624,7 +634,7 @@ nav {
 		/* padding: 276px; */
 		background: #FFDDDD;
 		box-sizing: border-box;
-		overflow-x: hidden;
+		/* overflow-x: hidden; */
 	}
 	.result {
 		position: relative;
@@ -641,7 +651,96 @@ nav {
 		background: #ffffff;
 		background-color: rgba(0, 0, 0, 0);
 	}
-	#makemarker-screen {
-    overflow-x: hidden;
+
+	#makemarker-ex {
+		position: relative;
+		top: 280px;
+		width: 360px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		border: none;
+		padding: 72px;
+		/* background: #FFDDDD; */
+		background-color: rgba(0, 0, 0, 0);
+	}
+	
+	#makemarker-ex1 {
+		position: absolute;
+		width: 300px;
+		height: 25px;
+		left: 30px;
+		top: 50px;
+	
+		font-family: 'Inter';
+		font-style: normal;
+		font-weight: 800;
+		font-size: 24px;
+		line-height: 29px;
+		text-align: center;
+	
+		color: #ff8383;
+	}
+	
+	#makemarker-ex2 {
+		position: absolute;
+		width: 200px;
+		height: 25px;
+		left: 80px;
+		top: 80px;
+	
+		font-family: 'Inter';
+		font-style: normal;
+		font-weight: 800;
+		font-size: 24px;
+		line-height: 29px;
+		text-align: center;
+	
+		color: #ff8383;
+	}
+	#buttons {
+		position: relative;
+		top: 150px;
+		width: 100px;
+		left: 0px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		border: none;
+		padding: 72px;
+		/* background: #FFDDDD; */
+		background-color: rgba(0, 0, 0, 0);
+	}
+	#next {
+		box-sizing: border-box;
+		position: absolute;
+		width: 160px;
+		height: 40px;
+		left: 0px;
+		top: 50px;
+		background: #FFFFFF;
+		border: 0.5px solid #000000;
+		border-radius: 10px;
+		text-align: center;
+	}
+	#qr-view {
+		position: absolute;
+		width: 200px;
+		height: 25px;
+		left: 50px;
+		top: 10px;
+	
+		font-family: 'Inter';
+		font-style: normal;
+		font-weight: 800;
+		font-size: 16px;
+		line-height: 24px;
+		text-align: center;
+	
+		color: #ff8383;
 	}
 }
