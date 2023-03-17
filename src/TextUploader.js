@@ -242,9 +242,10 @@ function TextUploader() {
       <div id="text-contents">
         <p id="text-ex1">表示させたい</p>
         <p id="text-ex2">文字を入力してください</p>
-        {/* <p id="text-ex3">({maxcharnum}文字以内)</p> */}
-        {/* <p>{text}</p> */}
-        <canvas id="preview" style = {{background:'rgb(0,0,0,0)'}}  width="600"></canvas>
+        <div id="div_canvas">
+          {/* <canvas id="preview" style = {{background:'rgb(0,0,0,1)'}}  width="600"></canvas> */}
+          <canvas id="preview" style = {{background:'rgb(0,0,0,0)'}}  width="600"></canvas>
+        </div>
         <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum} placeholder={maxcharnum + "文字以内"}/>
           <p id="change-color">&lt;文字色の変更&gt;</p>
         <div id="color-paret">

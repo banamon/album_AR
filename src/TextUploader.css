@@ -139,13 +139,15 @@ nav {
   position: relative;
   top: 350px;
   width: 600px;
+  width: 620px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   border: none;
-  padding: 72px;
+  /* padding: 72px; */
+  padding: 0;
   background: #FFDDDD;
 }
 
@@ -417,13 +419,22 @@ nav {
     border: 2px solid #FF8383;
   }
   
+  /* Canva関係 */
+  #div_canvas{
+    /* background-color: tomato; */
+    width: 600px;
+    height: 600px;
+  }
+
   #preview {
-    position: absolute;
+    position: static;
+    margin: 0 auto;
+    /* position: absolute; */
     /* width: 500px;
     height: 250px;
     left: 50px; */
-    top: 70px;
-    left: 30px;
+    /* top: 70px; */
+    /* left: 30px; */
   }
   
   #next-makemarker {
