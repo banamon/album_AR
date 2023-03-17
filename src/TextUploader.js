@@ -13,7 +13,7 @@ import { borderRadius } from "@mui/system";
 function TextUploader() {
   const [text, setText] = useState("");
   const filename_textimg = "text.png";
-  const maxcharnum = 20;
+  const maxcharnum = 15;
 
   const fontcolors = [
     {fill: `#FF8383`, stroke: `#FFDDDD`},
@@ -74,7 +74,7 @@ function TextUploader() {
 
     //文字のスタイルを指定
     // ctx.font = "48px bold " + fonts[fonts_index];
-    ctx.font = "bold 48px 'Segoe Print', san-serif";
+    ctx.font = "bold 40px 'Segoe Print', san-serif";
     ctx.strokeStyle = strokecolor;
     ctx.lineWidth = "13";
     ctx.textBaseline = "center";
@@ -221,7 +221,7 @@ function TextUploader() {
         <p id="text-ex2">文字を入力してください</p>
         {/* <p id="text-ex3">({maxcharnum}文字以内)</p> */}
         {/* <p>{text}</p> */}
-        <canvas id="preview" style = {{background:'rgb(0,0,0,0)'}}  ></canvas>
+        <canvas id="preview" style = {{background:'rgb(0,0,0,0)'}}  width="600"></canvas>
         <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum} placeholder={maxcharnum + "文字以内"}/>
           <p id="change-color">&lt;文字色の変更&gt;</p>
         <div id="color-paret">
