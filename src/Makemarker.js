@@ -38,6 +38,7 @@ const MovieUploader = () => {
 
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
+  const [isQR, setQR] = useState(false);
 
   // 送信された画像パス（予定：今は用意したパス）⇒Defaltを準備してもいいかも
   var innerImageURL = `${process.env.PUBLIC_URL}/testsrc/test.jpg`;
@@ -72,11 +73,16 @@ const MovieUploader = () => {
   });
   // qrCode.append(code_area);
   useEffect(() => {
-    console.log("描写");
-    const code_area = document.getElementById("code-area")
-    console.log(code_area);
-    qrCode.update({data: qr_path});
-    qrCode.append(code_area);
+    if(isUploaded){
+      // if(!isQR){
+        console.log("描写");
+        const code_area = document.getElementById("code-area")
+        console.log(code_area);
+        qrCode.update({data: qr_path});
+        qrCode.append(code_area);
+        // setQR(true);
+      // }
+    }
   });
 
   // DBにARマーカーの情報を格納
@@ -115,11 +121,15 @@ const MovieUploader = () => {
   };
 
   const DownloadQR = () =>{
-    let canvas = document.getElementById("canvas_qr");
-    let link = document.createElement("a");
-    link.href = canvas.toDataURL("image/png");
-    link.download = "qr-code.png";
-    link.click();
+    // let canvas = document.getElementById("code-area").children[0];
+    // console.log(canvas);
+    // // let canvas = document.getElementById("canvas_qr");
+    // let link = document.createElement("a");
+    // link.href = canvas.toDataURL("image/png");
+    // link.download = "qr-code.png";
+    // link.click();
+
+        qrCode.download("png");
   }
 
   const noradio = {
@@ -217,7 +227,6 @@ const MovieUploader = () => {
                   <div id="QR-box">
                     <p id="qr-view">閲覧用QRコード</p>
                     <div id="code-area">
-                      <div ref={ref}/>
                       {/* <QRCodeCanvas id = "canvas_qr" value={qr_path} />, */}
                     </div>
                       <Button id="qr-dl" variant="contained" onClick={DownloadQR}><a>共有</a></Button>
