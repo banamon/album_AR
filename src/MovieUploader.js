@@ -10,6 +10,9 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 import { Link } from "react-router-dom";
 
 function MovieUploader() {
+  const sizeLimit_MB = 20;
+  const sizeLimit = 1024 * 1024 * sizeLimit_MB;// 制限サイズ
+
   const [loading, setLoading] = useState(false);
   const [isUploaded, setUploaded] = useState(false);
   var [user_id, setuse_id] = useState("hogehgoe");
@@ -20,7 +23,11 @@ function MovieUploader() {
   const OnFileUplodeToFirebase = async (e) => {
     console.log(e.target.files);
     const file = e.target.files[0];
+    if (file.size > sizeLimit) {
+      alert('ファイルサイズは'+sizeLimit_MB+'MB以下にしてください'); // エラーメッセージを表示
 
+      return;
+    }
     // DB登録
     try {
       const docRef = await addDoc(collection(firebase.db, "arbum_data"), {});
@@ -279,6 +286,7 @@ function MovieUploader() {
                   ファイルを選択
                   <input
                     className="movieUploadInput"
+                    id="fileinput"
                     type="file"
                     onChange={OnFileUplodeToFirebase}
                     accept=".mp4"
