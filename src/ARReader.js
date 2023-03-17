@@ -111,9 +111,12 @@ const ARComponent = () => {
 
   const ViewMoviefromMarker = () => {
     return (
-      // <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="enabled: false">
-       <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="dotsColor: red; backgroundColor: #FFDDDD">
-      {/* // <a-scene arjs  loading-screen="dotsColor: red; backgroundColor: #FFDDDD"> */}
+       <a-scene arjs="sourceType: webcam;
+       sourceWidth:1280;
+       sourceHeight:960;
+       displayWidth: 1280;
+       displayHeight: 960;" loading-screen="dotsColor: red; backgroundColor: #FFDDDD">
+       {/* <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="dotsColor: red; backgroundColor: #FFDDDD"> */}
         <a-assets timeout="600000">
           <video id="video" src={moviefile_path} preload="auto"></video>
           <img id="textimg" src={textimgfile_path}></img>
