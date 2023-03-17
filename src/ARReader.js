@@ -131,12 +131,13 @@ const ARComponent = () => {
           <a-video
             id="a_video"
             src="#video"
+            // scale="4"
             width="4.6"
             height="4.6"
             position="0 0 -3"
             rotation="0 0 0"
           ></a-video>
-          <a-image id="a_textimg" src="#textimg" position="0 3 -3" scale="3 3 3"></a-image>
+          <a-image id="a_textimg" src="#textimg" position="0 3 -3" scale="3"></a-image>
         </a-marker>
           <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" model-loader></a-entity>
 
