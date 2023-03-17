@@ -494,31 +494,32 @@ nav {
     /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); */
   }
 
+  /* 文字色選択label関係 */
   #color-paret {
     position: absolute;
     width: 240px;
     height: 60px;
     top: 280px;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     border-radius: 10px;
   }
   
   #font-color-0 {
     position: absolute;
-    top: 15px;
-    left: 35px;
+    top: 13px;
+    left: -40px;
   }
   
   #font-color-1 {
     position: absolute;
     top: 15px;
-    left: 105px;
+    left: 0px;
   }
   
   #font-color-2 {
     position: absolute;
     top: 15px;
-    left: 175px;
+    left: 40px;
   }
 
   #change-color {

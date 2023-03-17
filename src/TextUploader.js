@@ -24,9 +24,9 @@ function TextUploader() {
   console.log(fontcolors);
 
   // user_idの取得
-  const { state } = useLocation();
-  const user_id = state.user_id;
-  // const user_id = "TzxJ9ox39PmW84TgS19x";
+  // const { state } = useLocation();
+  // const user_id = state.user_id;
+  const user_id = "TzxJ9ox39PmW84TgS19x";
   console.log("id取得" + user_id);
 
   const InputText = (inputText) => {
