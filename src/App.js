@@ -177,6 +177,11 @@ const Home = () => {
               <p id="lets-ex">未来に残る自分だけのアルバムを作成しよう</p>
               <p><Link to="/about"><button className="lets-use" ><a>使ってみる</a></button></Link></p>
             </div>
+            <div id="footer">
+              <a>© 2023 taga minari</a>
+              <img src="img/app_icon_v2.png" id="footer-img"/>
+              <div id="footer-title"><b>ARバムめーかー</b></div>
+            </div>
           </div>
         </body>
       </html>

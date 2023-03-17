@@ -1343,6 +1343,59 @@ p {
   z-index: 10;
 }
 
+#footer {
+  position: relative;
+  border-top: solid 1px lightgray;
+  background-color: #FF8383;
+  padding-bottom: 0px;
+  height: 100px;
+  width: 100%;
+  top: 400px;
+}
+
+#footer a {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  left: 16px;
+  top: 0px;
+  
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 44px;
+  text-align: center;
+  
+  color: #FFFFFF;
+}
+
+#footer b {
+  position: relative;
+  width: 300px;
+  height: 55px;
+  left: 19px;
+  top: -8px;
+
+  font-family: 'Senobi Gothic';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 60px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+#footer-img {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  left: -121px;
+  top: 45px;
+  z-index: 5;
+}
+
 @media screen and (max-width: 1024px) {
   .nav-links {
     width: 55%;
@@ -1351,7 +1404,7 @@ p {
 
 @media screen and (max-width: 768px) {
   .body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     /* overflow: scroll; */
   }
   /* nav {
@@ -1380,7 +1433,7 @@ p {
   }
   #start-screen {
     height: 5000px;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
   #title_box {
     position: relative;
@@ -1483,9 +1536,9 @@ p {
   
   #catchfrase {
     position: absolute;
-    width: calc(0.75 * 650px);
+    width: 360px;
     height: calc(0.75 * 130px);
-    left: calc(0.75 * -65px);
+    left: 15px;
     top: 0px;
     font-family: 'Inter';
     font-style: normal;
@@ -1503,9 +1556,9 @@ p {
   #catch_ex_1-1 {
     display: block;
     position: absolute;
-    width: calc(0.75 * 650px);
+    width: 360px;
     height: calc(0.75 * 50px);
-    left: -53px;
+    left: 6px;
     top: calc(0.75 * 75px);
   
     font-family: 'Inter';
@@ -1521,9 +1574,9 @@ p {
   #catch_ex_1-2 {
     display: block;
     position: absolute;
-    width: calc(0.75 * 650px);
+    width: 360px;
     height: calc(0.75 * 50px);
-    left: -50px;
+    left: 10px;
     top: calc(0.75 * 105px);
   
     font-family: 'Inter';
@@ -1538,9 +1591,9 @@ p {
   
   #catch_ex_2 {
     position: absolute;
-    width: calc(0.75 * 650px);
+    width: 360px;
     height: calc(0.75 * 50px);
-    left: calc(0.75 * -65px);
+    left: 0px;
     top: calc(0.75 * 135px);
   
     font-family: 'Inter';
@@ -1650,15 +1703,15 @@ p {
   
   #demo2_title {
     position: absolute;
-    width: 400px;
+    width: 360px;
     height: 60px;
-    left: -20px;
+    left: 0px;
     top: 135px;
   
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 58px;
     text-align: center;
   
@@ -1701,15 +1754,15 @@ p {
   
   #demo3_title {
     position: absolute;
-    width: 400px;
+    width: 360px;
     height: 60px;
-    left: -20px;
+    left: 0px;
     top: 250px;
   
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 58px;
     text-align: center;
   
@@ -1751,9 +1804,9 @@ p {
   }
   #center_ex {
     position: relative;
-    width: calc(0.75 * 700px);
+    width: calc(0.75 * 400px);
     height: calc(0.75 * 70px);
-    left: calc(0.75 * 0px);
+    left: -112.5px;
     top: 100px;
     /* background-color: #011853; */
     background-color: rgba(0, 0, 0, 0);
@@ -1761,9 +1814,9 @@ p {
   
   #center_ex1 {
     position: absolute;
-    width: calc(0.75 * 700px);
+    width: calc(0.75 * 400px);
     height: calc(0.75 * 50px);
-    left: 0px;
+    left: 112.5px;
     top: 0px;
     
     font-family: 'Inter';
@@ -1782,9 +1835,9 @@ p {
   #center_ex3 {
     display: block;
     position: absolute;
-    width: calc(0.75 * 700px);
+    width: calc(0.75 * 400px);
     height: calc(0.75 * 50px);
-    left: 0px;
+    left: 112.5px;
     top: calc(0.75 * 25px);
   
     font-family: 'Inter';
@@ -1799,9 +1852,9 @@ p {
   #center_ex4 {
     display: block;
     position: absolute;
-    width: calc(0.75 * 700px);
+    width: calc(0.75 * 400px);
     height: calc(0.75 * 50px);
-    left: 0px;
+    left: 114px;
     top: 37px;
   
     font-family: 'Inter';
@@ -1825,9 +1878,9 @@ p {
   }
   #how_to_use_string {
     position: absolute;
-    width: calc(0.75 * 500px);
+    width: calc(0.75 * 400px);
     height: calc(0.75 * 150px);
-    left: 0px;
+    left: 35px;
     top: 10px;
   
     font-family: 'Inter';
@@ -2555,7 +2608,7 @@ p {
   }
   #page-last {
     position: relative;
-    width: 100vh;
+    width: 360px;
     height: 100px;
     left: 0px;
     top: 245px;
