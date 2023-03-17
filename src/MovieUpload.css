@@ -434,20 +434,24 @@ progress {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: #FFDDDD;
+  /* background: repeating-linear-gradient(-45deg, #f5d5da, #f5d5da 5px, #fcf0f1 0, #fcf0f1 10px); ストライプの色 */
   width: 400px;
   height: 15px;
   border-radius: 30px;
 }
 ::-moz-progress-bar {
-  background-color: #FF8383;
+  /* background-color: #FF8383; */
+  background: repeating-linear-gradient(-45deg, #FF8383, #FF8383 5px, #fcf0f1 0, #fcf0f1 10px); /* ストライプの色 */
   border-radius: 30px;
 }
 ::-webkit-progress-bar {
   background-color: #FFDDDD;
+  /* background: repeating-linear-gradient(-45deg, #f5d5da, #f5d5da 5px, #fcf0f1 0, #fcf0f1 10px); ストライプの色 */
   border-radius: 30px;
 }
 ::-webkit-progress-value {
-  background-color: #FF8383;
+  /* background-color: #FF8383; */
+  background: repeating-linear-gradient(-45deg, #FF8383, #FF8383 5px, #fcf0f1 0, #fcf0f1 10px); /* ストライプの色 */
   border-radius: 30px;
 }
 

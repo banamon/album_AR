@@ -222,6 +222,7 @@ nav {
   left: 50px; */
 	top: 100px;
 	left: 150px;
+  /* color: aliceblue; */
 }
 
 #change-color {
@@ -481,30 +482,39 @@ nav {
     color : #FF8383;
     /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5); */
   }
+
+  #color-paret {
+    position: absolute;
+    width: 240px;
+    height: 60px;
+    top: 280px;
+    background-color: aliceblue;
+    border-radius: 10px;
+  }
   
   #font-color-0 {
     position: absolute;
-    top: 300px;
-    left: 115px;
+    top: 15px;
+    left: 35px;
   }
   
   #font-color-1 {
     position: absolute;
-    top: 300px;
-    left: 175px;
+    top: 15px;
+    left: 105px;
   }
   
   #font-color-2 {
     position: absolute;
-    top: 300px;
-    left: 235px;
+    top: 15px;
+    left: 175px;
   }
 
   #change-color {
     display: block;
     position: absolute;
-    top: 270px;
-    left: 50px;
+    top: 255px;
+    left: 40px;
     position: absolute;
     width: calc(0.7*400px);
     height: calc(0.6*25px);
@@ -517,5 +527,6 @@ nav {
     text-align: center;
   
     color: #ff8383;
+    z-index: 3;
   }
 }

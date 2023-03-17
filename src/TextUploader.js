@@ -221,16 +221,18 @@ function TextUploader() {
         <p id="text-ex2">文字を入力してください</p>
         {/* <p id="text-ex3">({maxcharnum}文字以内)</p> */}
         {/* <p>{text}</p> */}
-        <canvas id="preview" style = {{background:'rgba(0,0,0,0)'}} ></canvas>
+        <canvas id="preview" style = {{background:'rgb(0,0,0,0)'}}  ></canvas>
         <input id="text-input" type="text" value={text} onChange={(e) => InputText(e.target.value)} maxLength={maxcharnum} placeholder={maxcharnum + "文字以内"}/>
-        <p id="change-color">&lt;文字色の変更&gt;</p>
-        {fontcolors.map((colors,index)=>(
-            <label key={index}>
-              <>{console.log("インデックスの中身", index)}</>
-              <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index} />
-              <div className="coloroptionbox" style={fontcolor_boxstyle(colors)} id={"font-color-" + index}></div>
-            </label>
-        ))}
+          <p id="change-color">&lt;文字色の変更&gt;</p>
+        <div id="color-paret">
+          {fontcolors.map((colors,index)=>(
+              <label key={index}>
+                <>{console.log("インデックスの中身", index)}</>
+                <input type="radio" name="fontColor" value={index} id={"fontcolor_" + index} style={noradio} onChange={handleChange} checked={index === selectedfontcolors_index} />
+                <div className="coloroptionbox" style={fontcolor_boxstyle(colors)} id={"font-color-" + index}></div>
+              </label>
+          ))}
+        </div>
         <Button onClick={MakeImgText} id="next-makemarker">
           <Link to="/marker" state={{ user_id }}><a>決定して次へ</a></Link>
         </Button>

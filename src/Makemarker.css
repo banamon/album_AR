@@ -672,7 +672,7 @@ nav {
 		width: 300px;
 		height: 25px;
 		left: 30px;
-		top: 50px;
+		top: 30px;
 	
 		font-family: 'Inter';
 		font-style: normal;
@@ -689,7 +689,7 @@ nav {
 		width: 200px;
 		height: 25px;
 		left: 80px;
-		top: 80px;
+		top: 60px;
 	
 		font-family: 'Inter';
 		font-style: normal;
@@ -702,7 +702,7 @@ nav {
 	}
 	#buttons {
 		position: relative;
-		top: 150px;
+		top: 230px;
 		width: 100px;
 		left: 0px;
 		display: flex;
@@ -742,5 +742,27 @@ nav {
 		text-align: center;
 	
 		color: #ff8383;
+	}
+	#marker-contents {
+		position: relative;
+		top: 230px;
+		width: 80%;
+		display: flex;
+		flex-wrap: wrap;
+		margin : 1px;
+		/* flex-direction: column; */
+		align-items: center;
+		justify-content: center;
+		/* text-align: center; */
+		border: none;
+		padding: 4px;
+		background: #FFDDDD;
+		background-color: rgba(0, 0, 0, 0);
+	}
+	.marker {
+		width: 80px;
+		height: 80px;
+		margin : 6px;
+		border: 5px dashed #000000;
 	}
 }
