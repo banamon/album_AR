@@ -4,8 +4,6 @@ import firebase from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { ref, getStorage, getDownloadURL } from "firebase/storage";
 import "./ARReader.css"
-import { Cursor } from "react-aframe-ar/dist/primitives";
-import { Button } from "@mui/material";
 
 const ARComponent = () => {
   const [loading, setLoading] = useState(false);
@@ -111,12 +109,12 @@ const ARComponent = () => {
 
   const ViewMoviefromMarker = () => {
     return (
-       <a-scene arjs="sourceType: webcam;
-       sourceWidth:1280;
-       sourceHeight:960;
-       displayWidth: 1280;
-       displayHeight: 960;" loading-screen="dotsColor: red; backgroundColor: #FFDDDD">
-       {/* <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="dotsColor: red; backgroundColor: #FFDDDD"> */}
+      //  <a-scene arjs="sourceType: webcam;
+      //  sourceWidth:1280;
+      //  sourceHeight:960;
+      //  displayWidth: 1280;
+      //  displayHeight: 960;" loading-screen="dotsColor: red; backgroundColor: #FFDDDD">
+       <a-scene arjs="sourceWidth: window.innerWidth > window.innerHeight ? 640 : 480; sourceHeight: window.innerWidth > window.innerHeight ? 480 : 640" loading-screen="dotsColor: red; backgroundColor: #FFDDDD">
         <a-assets timeout="600000">
           <video id="video" src={moviefile_path} preload="auto"></video>
           <img id="textimg" src={textimgfile_path}></img>
