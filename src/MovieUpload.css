@@ -275,6 +275,7 @@ nav {
   /* padding: 276px; */
   background: #FFDDDD;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 #load-contents {
@@ -581,6 +582,7 @@ progress {
 
   #screen {
     height: 800px;
+    overflow-x: hidden;
   }
   
   #uploaded-screen {
@@ -596,6 +598,7 @@ progress {
     /* padding: 276px; */
     background: #FFDDDD;
     box-sizing: border-box;
+    overflow-x: hidden;
   }
   
   .next-button {

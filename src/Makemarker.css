@@ -641,4 +641,7 @@ nav {
 		background: #ffffff;
 		background-color: rgba(0, 0, 0, 0);
 	}
+	#makemarker-screen {
+    overflow-x: hidden;
+	}
 }

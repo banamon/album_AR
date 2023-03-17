@@ -347,7 +347,7 @@ nav {
     text-align: center;
     flex-direction: column;
     align-items: center;
-  
+    overflow-x: hidden;
     /* padding: 276px; */
     background: #FFDDDD;
     box-sizing: border-box;
