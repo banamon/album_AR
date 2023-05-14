@@ -1,71 +1,34 @@
-# Getting Started with Create React App
+# ARバムめーかー
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## システム概要
+大学4年生の時に
+[Open Hack U 2022 Spring OSAKA](https://hacku.yahoo.co.jp/hacku2022spring_osaka/)
+に2人で参加した際に開発したWebアプリです．
 
-## Available Scripts
+大学4年生で卒業シーズンだったのもあり，思い出を残すものとして，卒業アルバムや手紙などの紙媒体により鮮明な思い出を残せるように，AR技術を用いて動画を表示するWebアプリを開発しました．
+システムリンク：[ARバムめーかー](https://arbummaker.web.app/)
 
-In the project directory, you can run:
+使用技術
+- React
+- A-Flame
+- AR.js
+- Firebase
+- FireStore
 
-### `npm start`
+## システム機能
+### 表示コンテンツ作成
+ARで表示したい動画のアップロードと，コメントを入力します．
+また，利用したいデザインのARマーカを選択すると，ARマーカと，AR表示ためのQRコードが発行されます．
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### AR表示
+ARマーカとQRコードを張り付けた紙媒体に対し，まず，QRコードから読み取りサイトを開きます．
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+その後，起動したカメラでARマーカを読み込むことで，動画やコメントを確認することが出来ます
 
-### `npm test`
+## システム画面
+### 表示コンテンツ投稿画面
+![ARコンテンツ投稿画面](https://github.com/banamon/album_AR/assets/120772851/e98793a5-e402-4e1a-9f73-b20c048d48a6)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### AR表示画面例
+![ARbamu](https://github.com/banamon/album_AR/assets/120772851/2bec126a-9c78-4e52-9e68-68a28628f7db)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# album-AR
